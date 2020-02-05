@@ -8,7 +8,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   number: state.number
-})
+});
 
 class ConnectedApp extends Component {
   onClick = () => {
