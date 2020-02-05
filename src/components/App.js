@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { increment } from '../redux/actions';
+import { increment, getAnimeEpisodes } from '../redux/actions';
 
 const mapDispatchToProps = (dispatch) => ({
-  increment: (number) => dispatch(increment(number))
+  increment: (number) => dispatch(increment(number)),
+  getAnimeEpisodes: () => dispatch(getAnimeEpisodes())
 });
 
 const mapStateToProps = (state) => ({
-  number: state.number
+  number: state.number,
+  episodes: state.episodes
 });
 
 class ConnectedApp extends Component {
   onClick = () => {
     console.log('call on click');
-
+    this.props.getAnimeEpisodes();
     this.props.increment(this.props.number);
   }
   // onClick() {
@@ -25,6 +27,21 @@ class ConnectedApp extends Component {
     return (
       <div>
         <h1>{this.props.number}</h1>
+        <ul>
+          {this.props.episodes.map((episode) => (
+            <li>
+              <div>{episode.title}</div>
+              <div>
+                <a href={episode.video_url}>Click to watch video</a>
+              </div>
+
+              <div>
+                <a href={episode.forum_url}>Open forum</a>
+              </div>
+
+            </li>
+          ))}
+        </ul>
 
         <div><p /></div>
         <button type="button" onClick={this.onClick}>Increment</button>
