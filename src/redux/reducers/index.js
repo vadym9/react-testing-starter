@@ -19,7 +19,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         episodes: [...payload]
-      }
+      };
     default:
       return state;
   }
