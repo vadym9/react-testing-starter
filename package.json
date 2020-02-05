@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "webpack-dev-server --env=dev --mode development ",
+        "start": "webpack-dev-server --env=dev --mode development",
         "start:prod": "webpack-dev-server --env=prod --mode production",
         "build": "webpack --env=dev --mode development",
         "build:prod": "webpack --env=prod --mode production",
@@ -34,10 +34,14 @@
         "clean-webpack-plugin": "3.0.0",
         "core-js": "3.6.4",
         "react": "16.12.0",
-        "react-dom": "16.12.0"
+        "react-dom": "16.12.0",
+        "react-redux": "7.1.3",
+        "redux": "4.0.5",
+        "redux-thunk": "2.3.0"
     },
     "devDependencies": {
         "@babel/core": "7.8.3",
+        "@babel/plugin-proposal-class-properties": "7.8.3",
         "@babel/plugin-proposal-object-rest-spread": "7.8.3",
         "@babel/plugin-syntax-decorators": "7.8.3",
         "@babel/preset-env": "7.8.3",
@@ -64,6 +68,7 @@
         "node-sass": "4.13.1",
         "postcss-loader": "3.0.0",
         "react-hot-loader": "4.12.19",
+        "redux-devtools": "3.5.0",
         "sass-loader": "8.0.2",
         "style-loader": "1.1.3",
         "webpack": "4.41.5",
