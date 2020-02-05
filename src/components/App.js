@@ -27,23 +27,23 @@ class ConnectedApp extends Component {
     return (
       <div>
         <h1>{this.props.number}</h1>
-        <ul>
-          {this.props.episodes.map((episode) => (
-            <li>
-              <div>{episode.title}</div>
-              <div>
-                <a href={episode.video_url}>Click to watch video</a>
-              </div>
+        <div>
+          <ul>
+            {this.props.episodes.map((episode) => (
+              <li>
+                <div>{episode.title}</div>
+                <div>
+                  <a href={episode.video_url}>Click to watch video</a>
+                </div>
 
-              <div>
-                <a href={episode.forum_url}>Open forum</a>
-              </div>
+                <div>
+                  <a href={episode.forum_url}>Open forum</a>
+                </div>
 
-            </li>
-          ))}
-        </ul>
-
-        <div><p /></div>
+              </li>
+            ))}
+          </ul>
+        </div>
         <button type="button" onClick={this.onClick}>Increment</button>
       </div>
     );
