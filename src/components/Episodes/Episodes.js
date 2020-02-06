@@ -13,20 +13,47 @@ const mapStateToProps = (state) => ({
 });
 
 class ConnectedEpisodes extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loading: false
+    };
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log('call getSnapshotBeforeUpdate');
+    console.log('this props', this.props);
+    console.log('prevProps', prevProps);
+    if (this.props.episodes !== undefined
+      && this.props.episodes !== prevProps.episodes) {
+      console.log('____Episodes');
+      this.setState({
+        loading: false
+      });
+    }
+    return null;
+  }
+
+  componentDidUpdate() {
+    console.log('component did update');
+  }
+
   onClick = () => {
     console.log('call on click');
     this.props.getAnimeEpisodes();
-    this.props.increment(this.props.number);
+    this.setState({
+      loading: true
+    });
+    // this.props.increment(this.props.number);
   }
-  // onClick() {
-  //   console.log('on clicfffk1133331');
-  // }
 
   render() {
     console.log(this.props.number);
     return (
       <div>
+        <div className={this.state.loading ? 'lds-dual-ring' : ''} />
         <h1>{this.props.number}</h1>
+        <button type="button" onClick={this.onClick}>Increment -</button>
         <div>
           <ul>
             {this.props.episodes.map((episode) => (
@@ -44,7 +71,6 @@ class ConnectedEpisodes extends Component {
             ))}
           </ul>
         </div>
-        <button type="button" onClick={this.onClick}>Increment</button>
       </div>
     );
   }

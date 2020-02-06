@@ -26,6 +26,7 @@ const getDevTools = mode => {
 
 module.exports = env => {
     return {
+        
         entry: "./src/index.js",
         output: {
             path: path.join(__dirname, "/dist"),
@@ -59,7 +60,8 @@ module.exports = env => {
                     use: [
                         MiniCssExtractPlugin.loader,
                         {
-                            loader: "css-loader"
+                            loader: "css-loader",
+                            options: { sourceMap: env === "dev" }
                         }
                     ]
                 },
@@ -67,7 +69,7 @@ module.exports = env => {
                     test: /\.scss$/,
                     use: [
                         "style-loader",
-                        MiniCssExtractPlugin.loader,
+                        env === "dev" ? "style-loader" : MiniCssExtractPlugin.loader,
                         {
                             loader: "css-loader",
                             options: { sourceMap: env === "dev" }
