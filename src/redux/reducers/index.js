@@ -26,6 +26,12 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         people: [...payload]
       };
+
+    case 'DELETE_CARD':
+      return {
+        ...state,
+        people: [...payload]
+      }
     default:
       return state;
   }

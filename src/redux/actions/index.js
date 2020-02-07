@@ -3,6 +3,11 @@ export const increment = (payload) => ({
   payload
 });
 
+export const deleteCard = (payload) => ({
+  type: 'DELETE_CARD',
+  payload
+})
+
 const requestSuccess = (name, payload) => ({
   type: `${`${name}_SUCCESS`}`,
   payload
@@ -11,6 +16,7 @@ const requestSuccess = (name, payload) => ({
 const requestFail = (name) => ({
   type: `${`${name}_FAILE`}`
 });
+
 
 const requestEpisodes = () => fetch('https://api.jikan.moe/v3/anime/1/episodes');
 const requestPeople = () => fetch('https://swapi.co/api/people/');
