@@ -3,18 +3,44 @@ export const increment = (payload) => ({
   payload
 });
 
-export const getAnimeEpisodesSUCCESS = (payload) => ({
-  type: 'GET_ANIME_EPISODES_SUCCESS',
+const requestSuccess = (name, payload) => ({
+  type: `${`${name}_SUCCESS`}`,
   payload
 });
 
-const getEpisodes = () => fetch('https://api.jikan.moe/v3/anime/1/episodes');
+const requestFail = (name) => ({
+  type: `${`${name}_FAILE`}`
+});
 
-export const getAnimeEpisodes = () => (dispatch) => getEpisodes()
-  .then((response) => {
-    console.log(response);
-    return response.json();
-  })
-  .then((json) => {
-    dispatch(getAnimeEpisodesSUCCESS(json.episodes));
-  });
+const requestEpisodes = () => fetch('https://api.jikan.moe/v3/anime/1/episodes');
+const requestPeople = () => fetch('https://swapi.co/api/people/');
+
+export const getAnimeEpisodes = () => async (dispatch) => {
+  console.log('______***Calll*****');
+
+  try {
+    const result = await requestEpisodes();
+    const json = await result.json();
+    dispatch(requestSuccess('GET_EPISODES', json.episodes));
+  } catch (e) {
+    dispatch(requestFail('GET_EPISODES'));
+  }
+};
+
+export const getPeople = () => async (dispatch) => {
+  try {
+    const result = await requestPeople();
+    const json = await result.json();
+    dispatch(requestSuccess('GET_PEOPLE', json.results));
+  } catch (e) {
+    dispatch(requestFail('GET_PEOPLE'));
+  }
+};
+// getEpisodes()
+//   .then((response) => {
+//     console.log(response);
+//     return response.json();
+//   })
+//   .then((json) => {
+//     dispatch(requestSuccess('GET_EPISODES',json.episodes));
+//   });

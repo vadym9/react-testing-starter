@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import App from './components/App';
 import Episodes from './components/Episodes/Episodes';
+import People from './components/People/People';
 
 class Router extends React.Component {
   render() {
@@ -21,12 +22,16 @@ class Router extends React.Component {
             <li>
               <Link to="/episodes">Episodes</Link>
             </li>
+            <li>
+              <Link to="/people">People</Link>
+            </li>
           </ul>
         </div>
 
         <Switch>
           {/* <Route path="/" exact component={App} /> */}
-          <Route path="/" exact component={Episodes} />
+          <Route path="/episodes" component={Episodes} />
+          <Route path="/" exact component={People} />
         </Switch>
       </BrowserRouter>
     );

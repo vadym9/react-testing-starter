@@ -1,0 +1,35 @@
+body{
+  margin: 0px;
+  background: linear-gradient(-45deg,white, #d1cecedc);
+  background-size: 400% 400%;
+  background-repeat: no-repeat;
+  height:100vh;
+  p {
+    margin: 0px;
+  }
+}
+
+.container {
+  margin: 0px auto;
+  padding: 0 80px;
+}
+
+.flex {
+  display: flex;
+}
+
+.jcsb {
+  justify-content: space-between;
+}
+
+.fd-column {
+  flex-direction: column;
+}
+
+.fw{
+  flex-wrap: wrap;
+}
+
+.jc-end{
+  justify-content: flex-end;
+}

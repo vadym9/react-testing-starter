@@ -1,7 +1,8 @@
 const initialState = {
   name: '',
   number: 0,
-  episodes: []
+  episodes: [],
+  people: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -15,10 +16,15 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         number: payload + 1
       };
-    case 'GET_ANIME_EPISODES_SUCCESS':
+    case 'GET_EPISODES_SUCCESS':
       return {
         ...state,
         episodes: [...payload]
+      };
+    case 'GET_PEOPLE_SUCCESS':
+      return {
+        ...state,
+        people: [...payload]
       };
     default:
       return state;
