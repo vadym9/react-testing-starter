@@ -24,9 +24,9 @@ class ConnectedPeople extends Component {
     const result = JSON.parse(clonedPeople);
 
     result.splice(e.target.id, 1);
-    console.log("result", result);
+    console.log('result', result);
 
-    this.props.deleteCard(result)
+    this.props.deleteCard(result);
   }
 
   render() {

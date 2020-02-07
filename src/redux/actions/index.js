@@ -6,7 +6,7 @@ export const increment = (payload) => ({
 export const deleteCard = (payload) => ({
   type: 'DELETE_CARD',
   payload
-})
+});
 
 const requestSuccess = (name, payload) => ({
   type: `${`${name}_SUCCESS`}`,

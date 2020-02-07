@@ -31,7 +31,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         people: [...payload]
-      }
+      };
     default:
       return state;
   }
