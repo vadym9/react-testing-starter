@@ -1,9 +1,13 @@
 .btn{
-  background: rgb(206, 206, 206);
+  background: rgba(70,91,167,.79);
   border:none;
   padding: 10px;
   margin:10px;
   border-radius: 10px;;
   cursor: pointer;
   color: white;
+  transition: background 0.5s;
+  &:hover{
+    background: rgba(14, 39, 129, 0.79);
+  }
 }

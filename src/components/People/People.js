@@ -6,6 +6,7 @@ import noimage from '../../img/noimage.png';
 const mapDispatchToProps = (dispatch) => ({
   getPeople: () => dispatch(getPeople()),
   deleteCard: (people) => dispatch(deleteCard(people))
+  // getPhotos: () => dispatch(getPhotos())
 });
 
 const mapStateToProps = (state) => ({
@@ -43,18 +44,28 @@ class ConnectedPeople extends Component {
                   <div className="card">
                     <div className="delete flex jc-end">
                       <div className="">
-                        <button type="button" id={index} onClick={this.onDelete} className="btn">Delete card</button>
+                        <button type="button" id={index} onClick={this.onDelete} className="btn">Remove</button>
                       </div>
-
                     </div>
                     <div className="avatar">
-                      <img alt="noimage" src={noimage} />
+                      <img alt="noimage" src={man.img} />
                     </div>
                     <div className="title">
-                      {man.name}
+                      <h3>{man.name}</h3>
                     </div>
-                    <div className="gender">
-                      {`Gender: ${man.gender}`}
+                    <div className="info">
+                      <div className="gender">
+                        <p>{`Gender: ${man.gender}`}</p>
+                      </div>
+                      <div className="height">
+                        <p>{`Height: ${man.height}`}</p>
+                      </div>
+                      <div className="mass">
+                        <p>{`Mass: ${man.mass}`}</p>
+                      </div>
+                      <div className="eye_color">
+                        <p>{`Eye color: ${man.eye_color}`}</p>
+                      </div>
                     </div>
                   </div>
                 </li>

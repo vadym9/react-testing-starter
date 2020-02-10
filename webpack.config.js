@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
+const Dotenv = require('dotenv-webpack');
 
 const hmr = mode => {
     return mode === "dev"
@@ -26,7 +27,6 @@ const getDevTools = mode => {
 
 module.exports = env => {
     return {
-        
         entry: "./src/index.js",
         output: {
             path: path.join(__dirname, "/dist"),
@@ -90,6 +90,7 @@ module.exports = env => {
             extensions: ["*", ".js", ".jsx"]
         },
         plugins: [
+            new Dotenv(),
             new CleanWebpackPlugin(),
             hmr("dev").hotModuleRepl,
             new HtmlWebpackPlugin({
