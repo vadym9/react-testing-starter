@@ -14,8 +14,31 @@ const mapStateToProps = (state) => ({
 });
 
 class ConnectedPeople extends Component {
-  onClick = () => {
+  constructor() {
+    super();
+
+    this.state = {
+      loading: true
+    };
+  }
+
+  componentDidMount = () => {
     this.props.getPeople();
+  }
+
+  getSnapshotBeforeUpdate = (prevProps) => {
+    if (this.props.people !== undefined
+      && this.props.people !== prevProps.people) {
+      console.log('____Episodes');
+      this.setState({
+        loading: false
+      });
+    }
+    return null;
+  }
+
+  componentDidUpdate = () => {
+    console.log('component did update');
   }
 
   onDelete = (e) => {
@@ -36,6 +59,7 @@ class ConnectedPeople extends Component {
     return (
       <div className="people">
         <div className="container">
+          <div className={this.state.loading ? 'lds-dual-ring' : ''} />
           <p>All right</p>
           <div>
             <ul className="cards flex fw">
@@ -48,7 +72,7 @@ class ConnectedPeople extends Component {
                       </div>
                     </div>
                     <div className="avatar">
-                      <img alt="noimage" src={man.img} />
+                      <img alt="noimage" src={man.img || noimage} />
                     </div>
                     <div className="title">
                       <h3>{man.name}</h3>
@@ -72,7 +96,7 @@ class ConnectedPeople extends Component {
               ))}
             </ul>
           </div>
-          <button type="button" onClick={this.onClick}>Show people</button>
+          {/* <button type="button" onClick={this.onClick}>Show people</button> */}
         </div>
       </div>
 

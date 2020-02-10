@@ -16,7 +16,7 @@ class ConnectedEpisodes extends Component {
   constructor() {
     super();
     this.state = {
-      loading: false
+      loading: true
     };
   }
 
@@ -38,12 +38,13 @@ class ConnectedEpisodes extends Component {
     console.log('component did update');
   }
 
+  componentDidMount = () => {
+    this.props.getAnimeEpisodes();
+  }
+
   onClick = () => {
     console.log('call on click');
-    this.props.getAnimeEpisodes();
-    this.setState({
-      loading: true
-    });
+
     // this.props.increment(this.props.number);
   }
 

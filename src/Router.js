@@ -29,9 +29,9 @@ class Router extends React.Component {
         </div>
 
         <Switch>
-          {/* <Route path="/" exact component={App} /> */}
+          <Route path="/" exact component={App} />
           <Route path="/episodes" component={Episodes} />
-          <Route path="/" exact component={People} />
+          <Route path="/people" exact component={People} />
         </Switch>
       </BrowserRouter>
     );

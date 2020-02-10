@@ -39,28 +39,32 @@ export const getPeople = () => async (dispatch) => {
     const resultPeople = await requestPeople();
     const jsonPeople = await resultPeople.json();
 
-    console.log(process.env.ACESS_KEY);
+    if (process.env.ACESS_KEY !== undefined) {
+      console.log(process.env.ACESS_KEY);
 
-    const resultImages = await requestRandomImages();
-    const jsonImages = await resultImages.json();
-    // console.log("jsonImages", jsonImages);
+      const resultImages = await requestRandomImages();
+      const jsonImages = await resultImages.json();
+      // console.log("jsonImages", jsonImages);
 
-    const result = jsonPeople.results.map((data, index) => {
-      const {
-        name, gender, height, mass, eye_color
-      } = data;
-      return {
-        name,
-        gender,
-        height,
-        mass,
-        eye_color,
-        img: jsonImages[index].urls.small
-      };
-    });
+      const result = jsonPeople.results.map((data, index) => {
+        const {
+          name, gender, height, mass, eye_color
+        } = data;
+        return {
+          name,
+          gender,
+          height,
+          mass,
+          eye_color,
+          img: jsonImages[index].urls.small
+        };
+      });
+      dispatch(requestSuccess('GET_PEOPLE', result));
+    } else {
+      dispatch(requestSuccess('GET_PEOPLE', jsonPeople.results));
+    }
+
     // console.log(result);
-
-    dispatch(requestSuccess('GET_PEOPLE', result));
   } catch (e) {
     dispatch(requestFail('GET_PEOPLE'));
   }
