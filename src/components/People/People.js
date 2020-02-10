@@ -60,7 +60,6 @@ class ConnectedPeople extends Component {
       <div className="people">
         <div className="container">
           <div className={this.state.loading ? 'lds-dual-ring' : ''} />
-          <p>All right</p>
           <div>
             <ul className="cards flex fw">
               {people.map((man, index) => (

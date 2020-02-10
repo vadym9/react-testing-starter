@@ -13,26 +13,26 @@ class Router extends React.Component {
   render() {
     return (
       <BrowserRouter>
-
-        <div>
-          <ul>
+        <header className="header">
+          <ul className="items flex">
             <li>
-              <Link to="/">Home</Link>
+              <Link className="link" to="/">Dashboard</Link>
             </li>
             <li>
-              <Link to="/episodes">Episodes</Link>
+              <Link className="link" to="/episodes">Episodes</Link>
             </li>
             <li>
-              <Link to="/people">People</Link>
+              <Link className="link" to="/people">People</Link>
             </li>
           </ul>
-        </div>
-
-        <Switch>
-          <Route path="/" exact component={App} />
-          <Route path="/episodes" component={Episodes} />
-          <Route path="/people" exact component={People} />
-        </Switch>
+        </header>
+        <main>
+          <Switch>
+            <Route path="/" exact component={App} />
+            <Route path="/episodes" component={Episodes} />
+            <Route path="/people" exact component={People} />
+          </Switch>
+        </main>
       </BrowserRouter>
     );
   }
