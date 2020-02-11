@@ -15,6 +15,7 @@
         "import/prefer-default-export":[1],
         "react/prefer-stateless-function":[1],
         "no-unused-vars":[1],
-        "camelcase": [1]
+        "camelcase": [1],
+        "react/no-access-state-in-setstate":[1]
     }
 }

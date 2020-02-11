@@ -2,7 +2,8 @@ const initialState = {
   name: '',
   number: 0,
   episodes: [],
-  people: []
+  people: [],
+  starships: []
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -31,6 +32,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         people: [...payload]
+      };
+
+    case 'GET_STARSHIPS_SUCCESS':
+      return {
+        ...state,
+        starships: [...payload]
       };
     default:
       return state;

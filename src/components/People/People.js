@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getPeople, deleteCard } from '../../redux/actions';
+import { deleteCard } from '../../redux/actions';
+import { getPeople } from '../../redux/thunk';
 import noimage from '../../img/noimage.png';
 
 const mapDispatchToProps = (dispatch) => ({

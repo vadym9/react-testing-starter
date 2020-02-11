@@ -21,10 +21,13 @@ class Router extends React.Component {
                 <Link className="btn-link" to="/">Dashboard</Link>
               </li>
               <li>
-                <Link className="btn-link" to="/episodes">Episodes</Link>
+                <Link className="btn-link" to="/episodes">Anime Episodes</Link>
               </li>
               <li>
-                <Link className="btn-link" to="/people">People</Link>
+                <Link className="btn-link" to="/people">Star Wars People</Link>
+              </li>
+              <li>
+                <Link className="btn-link" to="/starships">Starships</Link>
               </li>
             </ul>
           </div>
@@ -32,9 +35,10 @@ class Router extends React.Component {
         </header>
         <main>
           <Switch>
-            <Route path="/" exact component={Starships} />
+            <Route path="/" exact component={App} />
             <Route path="/episodes" component={Episodes} />
             <Route path="/people" exact component={People} />
+            <Route path="/starships" component={Starships} />
           </Switch>
         </main>
       </BrowserRouter>

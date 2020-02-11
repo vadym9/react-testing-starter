@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { increment, getAnimeEpisodes } from '../../redux/actions';
+import { increment } from '../../redux/actions';
+import { getAnimeEpisodes } from '../../redux/thunk';
 
 const mapDispatchToProps = (dispatch) => ({
   increment: (number) => dispatch(increment(number)),
