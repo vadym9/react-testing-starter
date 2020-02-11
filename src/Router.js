@@ -8,6 +8,7 @@ import {
 import App from './components/App';
 import Episodes from './components/Episodes/Episodes';
 import People from './components/People/People';
+import Starships from './components/Starships/Starships';
 
 class Router extends React.Component {
   render() {
@@ -31,7 +32,7 @@ class Router extends React.Component {
         </header>
         <main>
           <Switch>
-            <Route path="/" exact component={App} />
+            <Route path="/" exact component={Starships} />
             <Route path="/episodes" component={Episodes} />
             <Route path="/people" exact component={People} />
           </Switch>
