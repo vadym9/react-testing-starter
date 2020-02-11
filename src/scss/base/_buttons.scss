@@ -1,15 +1,16 @@
-.btn{
-  background: rgba(70,91,167,.79);
-  border:none;
+.btn {
+  background: rgba(70, 91, 167, .79);
+  border: none;
   padding: 10px 10px 10px 20px;
-  margin:10px;
-  border-radius: 10px;;
+  margin: 10px;
+  border-radius: 10px;
+  ;
   cursor: pointer;
   color: white;
   transition: background 0.5s;
   position: relative;
 
-  &:before{
+  &:before {
     position: absolute;
     font-family: 'icomoon';
     content: '\e900';
@@ -18,7 +19,30 @@
     font-size: 12px;
     left: 5px;
   }
-  &:hover{
+
+  &:hover {
     background: rgba(14, 39, 129, 0.79);
   }
 }
+
+.btn-link {
+
+  color: white;
+  text-decoration: none;
+  // color: black;
+  padding: 10px;
+  background-color: rgba(70, 91, 167, 0.79);
+  border-radius: 5px;
+  transition: background-color 0.5s;
+  // margin: 10px;
+  &:hover {
+
+    background-color: rgba(14, 39, 129, 0.79);
+  }
+}
+
+// color: white;
+// margin:0px 5px;
+// text-decoration: none;
+// padding: 10px;
+// background-color: wheat;

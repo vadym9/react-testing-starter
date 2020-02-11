@@ -51,21 +51,17 @@ class ConnectedEpisodes extends Component {
   render() {
     console.log(this.props.number);
     return (
-      <div>
+      <div className="container">
         <div className={this.state.loading ? 'lds-dual-ring' : ''} />
-        <h1>{this.props.number}</h1>
-        <button type="button" onClick={this.onClick}>Increment -</button>
-        <div>
-          <ul>
-            {this.props.episodes.map((episode) => (
-              <li>
-                <div>{episode.title}</div>
-                <div>
-                  <a href={episode.video_url}>Click to watch video</a>
-                </div>
+        <div className="list">
 
-                <div>
-                  <a href={episode.forum_url}>Open forum</a>
+          <ul className="episodes flex fd-column ai-center">
+            {this.props.episodes.map((episode) => (
+              <li className="episode flex jcsb ai-center">
+                <div><h3>{episode.title}</h3></div>
+                <div className="btn-block">
+                  <a className="btn-link" href={episode.video_url}>Watch video</a>
+                  <a className="btn-link" href={episode.forum_url}>Open forum</a>
                 </div>
 
               </li>
