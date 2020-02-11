@@ -7,7 +7,7 @@ class Starships extends Component {
       <Container>
         <h1>OK</h1>
       </Container>
-    )
+    );
   }
 }
 
