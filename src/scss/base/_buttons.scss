@@ -1,12 +1,23 @@
 .btn{
   background: rgba(70,91,167,.79);
   border:none;
-  padding: 10px;
+  padding: 10px 10px 10px 20px;
   margin:10px;
   border-radius: 10px;;
   cursor: pointer;
   color: white;
   transition: background 0.5s;
+  position: relative;
+
+  &:before{
+    position: absolute;
+    font-family: 'icomoon';
+    content: '\e900';
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 12px;
+    left: 5px;
+  }
   &:hover{
     background: rgba(14, 39, 129, 0.79);
   }
