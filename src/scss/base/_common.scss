@@ -1,16 +1,15 @@
-body{
+body {
   margin: 0px;
-  background: linear-gradient(-45deg,white, #d1cecedc);
+  background: linear-gradient(-45deg, white, $light-gray);
   background-size: 400% 400%;
   background-repeat: no-repeat;
-  height:100vh;
-  // color: white;
+  height: 100vh;
+
   p {
     margin: 1px;
-    // color: white;
   }
 
-  main{
+  main {
     margin-top: 15px;
   }
 }
@@ -24,7 +23,7 @@ body{
   display: flex;
 }
 
-.jc-center{
+.jc-center {
   justify-content: center;
 }
 
@@ -36,18 +35,18 @@ body{
   flex-direction: column;
 }
 
-.fw{
+.fw {
   flex-wrap: wrap;
 }
 
-.jc-end{
+.jc-end {
   justify-content: flex-end;
 }
 
-.ai-center{
+.ai-center {
   align-items: center;
 }
 
-.jc-start{
+.jc-start {
   justify-content: flex-start;
 }

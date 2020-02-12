@@ -1,16 +1,14 @@
-.header{
-  background: #3737d8;
+.header {
+  background: $transparent-blue;
   padding: 15px;
-  border-radius: 10px;;
-  
-  .items{
+  border-radius: 10px;
+
+  .items {
     margin: 0px;
     padding: 0px;
     list-style-type: none;
-    
-    li{
-      
-      // background-color: blue;;
+
+    li {
       margin: 10px;
     }
   }

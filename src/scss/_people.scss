@@ -1,6 +1,4 @@
-.people {
-  .container {
-    .cards {
+.people .container .cards{
       list-style-type: none;
       padding: 0px;
       margin: 0px;
@@ -8,7 +6,7 @@
 
       .card {
         position: relative;
-        background-color: rgba(70, 91, 167, 0.79);
+        background-color: $light-blue;
         padding: 15px;
         width: 300px;
         height: 320px;
@@ -35,32 +33,9 @@
           z-index: 1;
           width: 100%;
           right: -5px;
-          // height: 100%;
           border-radius: 10px;
-          // background-color: rgba(179, 179, 184, 0.425);
           cursor: default;
-          // padding:3px;
-          // top: 50%;
-          // left:50%;
-
         }
-
-        // @keyframes animation1 {
-        //   0%{
-        //     border-color: white transparent transparent transparent;
-        //   }
-        //   25%{
-        //     border-color: transparent white transparent transparent;
-        //   }
-        //   75%{
-        //     border-color: transparent transparent white transparent;
-        //   }
-        //   100%{
-        //     border-color: transparent transparent transparent white;
-        //   }
-        // }
-
-
 
         .avatar {
           text-align: center;
@@ -68,7 +43,7 @@
           position: relative;
           width: 100%;
           height: 200px;
-          // padding: 8px 0px;
+
 
           img {
             border-radius: 10px;
@@ -82,20 +57,9 @@
         }
 
         .title {
-          // margin: 8px 0px;
           margin: 10px 0px;
           border-radius: 10px;
-          // margin-top:1px;
-          // padding:20px 0px;
           text-align: center;
-          // border:1px solid rgb(202, 198, 198);
-          // background-color: black;
         }
-
-
-
-
       }
-    }
-  }
 }

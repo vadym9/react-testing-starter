@@ -5,7 +5,7 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import App from './components/App';
+import Dashboard from './components/Dashboard/Dashboard';
 import Episodes from './components/Episodes/Episodes';
 import People from './components/People/People';
 import Starships from './components/Starships/Starships';
@@ -35,7 +35,7 @@ class Router extends React.Component {
         </header>
         <main>
           <Switch>
-            <Route path="/" exact component={App} />
+            <Route path="/" exact component={Dashboard} />
             <Route path="/episodes" component={Episodes} />
             <Route path="/people" exact component={People} />
             <Route path="/starships" component={Starships} />

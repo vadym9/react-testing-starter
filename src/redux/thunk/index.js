@@ -7,7 +7,6 @@ const requestFail = (name) => ({
   type: `${`${name}_FAILE`}`
 });
 
-// const accessKey = '';
 const requestEpisodes = () => fetch('https://api.jikan.moe/v3/anime/1/episodes');
 const requestPeople = () => fetch('https://swapi.co/api/people/');
 const requestStarships = () => fetch('https://swapi.co/api/starships');
@@ -25,8 +24,6 @@ export const getStarships = () => async (dispatch) => {
 };
 
 export const getAnimeEpisodes = () => async (dispatch) => {
-  console.log('______***Calll*****');
-
   try {
     const result = await requestEpisodes();
     const json = await result.json();
@@ -41,13 +38,9 @@ export const getPeople = () => async (dispatch) => {
     const resultPeople = await requestPeople();
     const jsonPeople = await resultPeople.json();
 
-    if (process.env.ACESS_KEY !== undefined) {
-      console.log(process.env.ACESS_KEY);
-
+    if (process.env.ACCESS_KEY !== undefined) {
       const resultImages = await requestRandomImages();
       const jsonImages = await resultImages.json();
-      // console.log("jsonImages", jsonImages);
-
       const result = jsonPeople.results.map((data, index) => {
         const {
           name, gender, height, mass, eye_color
@@ -65,18 +58,7 @@ export const getPeople = () => async (dispatch) => {
     } else {
       dispatch(requestSuccess('GET_PEOPLE', jsonPeople.results));
     }
-
-    // console.log(result);
   } catch (e) {
     dispatch(requestFail('GET_PEOPLE'));
   }
 };
-
-// getEpisodes()
-//   .then((response) => {
-//     console.log(response);
-//     return response.json();
-//   })
-//   .then((json) => {
-//     dispatch(requestSuccess('GET_EPISODES',json.episodes));
-//   });

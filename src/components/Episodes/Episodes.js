@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import uuidv1 from 'uuid/v1';
 import { increment } from '../../redux/actions';
 import { getAnimeEpisodes } from '../../redux/thunk';
+
 
 const mapDispatchToProps = (dispatch) => ({
   increment: (number) => dispatch(increment(number)),
@@ -21,13 +23,9 @@ class ConnectedEpisodes extends Component {
     };
   }
 
-  getSnapshotBeforeUpdate(prevProps, prevState) {
-    console.log('call getSnapshotBeforeUpdate');
-    console.log('this props', this.props);
-    console.log('prevProps', prevProps);
+  getSnapshotBeforeUpdate(prevProps) {
     if (this.props.episodes !== undefined
       && this.props.episodes !== prevProps.episodes) {
-      console.log('____Episodes');
       this.setState({
         loading: false
       });
@@ -36,17 +34,10 @@ class ConnectedEpisodes extends Component {
   }
 
   componentDidUpdate() {
-    console.log('component did update');
   }
 
   componentDidMount = () => {
     this.props.getAnimeEpisodes();
-  }
-
-  onClick = () => {
-    console.log('call on click');
-
-    // this.props.increment(this.props.number);
   }
 
   render() {
@@ -58,13 +49,12 @@ class ConnectedEpisodes extends Component {
 
           <ul className="episodes flex fd-column ai-center">
             {this.props.episodes.map((episode) => (
-              <li className="episode flex jcsb ai-center">
+              <li key={uuidv1()} className="episode flex jcsb ai-center">
                 <div><h3>{episode.title}</h3></div>
                 <div className="btn-block">
                   <a className="btn-link" href={episode.video_url}>Watch video</a>
                   <a className="btn-link" href={episode.forum_url}>Open forum</a>
                 </div>
-
               </li>
             ))}
           </ul>
@@ -73,7 +63,6 @@ class ConnectedEpisodes extends Component {
     );
   }
 }
-
 
 const Episodes = connect(mapStateToProps, mapDispatchToProps)(ConnectedEpisodes);
 export default Episodes;

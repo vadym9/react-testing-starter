@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   Container, Ships
-} from './styles/styles';
+} from './styles';
 import { getStarships } from '../../redux/thunk';
 import Starship from '../Starship/Starship';
 
@@ -21,7 +21,6 @@ class ConnectedStarships extends Component {
 
     this.state = {
       loading: true
-
     };
   }
 
@@ -32,7 +31,6 @@ class ConnectedStarships extends Component {
   getSnapshotBeforeUpdate = (prevProps) => {
     if (this.props.starships !== undefined
       && this.props.starships !== prevProps.starships) {
-      console.log('starships');
       this.setState({
         loading: false
       });
@@ -41,36 +39,9 @@ class ConnectedStarships extends Component {
   }
 
   componentDidUpdate = () => {
-
   }
-  // componentDidUpdate = (prevProps, prevState, snapshot) => {
-  //   if (nextProps.starships !== undefined && this.props.starships !== undefined
-  //     && this.props.starships !== nextProps.starships) {
-  //     this.setState({
-  //       loading: false
-  //     })
-  //   }
-
-  //   console.log('this props', this.props);
-  //   console.log('prevProps', prevProps);
-  // }
-
-  // static getDerivedStateFromProps = (nextProps, prevState) => {
-  //   console.log('ff', this.props);
-
-  //   if (this.props !== undefined && nextProps.starships !== undefined
-  //     && this.props.starships !== undefined
-  //     && this.props.starships !== nextProps.starships) {
-  //     return {
-  //       loading: false
-  //     };
-  //   }
-  //   return null;
-  // }
 
   render() {
-    console.log('****call render');
-
     return (
       <Container>
         <div className={this.state.loading ? 'lds-dual-ring' : ''} />

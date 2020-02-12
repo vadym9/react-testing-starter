@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import uuidv1 from 'uuid/v1';
 import { deleteCard } from '../../redux/actions';
 import { getPeople } from '../../redux/thunk';
 import noimage from '../../img/noimage.png';
 
+
 const mapDispatchToProps = (dispatch) => ({
   getPeople: () => dispatch(getPeople()),
   deleteCard: (people) => dispatch(deleteCard(people))
-  // getPhotos: () => dispatch(getPhotos())
 });
 
 const mapStateToProps = (state) => ({
@@ -30,7 +31,6 @@ class ConnectedPeople extends Component {
   getSnapshotBeforeUpdate = (prevProps) => {
     if (this.props.people !== undefined
       && this.props.people !== prevProps.people) {
-      console.log('____Episodes');
       this.setState({
         loading: false
       });
@@ -39,24 +39,17 @@ class ConnectedPeople extends Component {
   }
 
   componentDidUpdate = () => {
-    console.log('component did update');
   }
 
   onDelete = (e) => {
-    console.log(e.target.id);
-    // const { id, people } = action.payload;
     const clonedPeople = JSON.stringify(this.props.people);
     const result = JSON.parse(clonedPeople);
-
     result.splice(e.target.id, 1);
-    console.log('result', result);
-
     this.props.deleteCard(result);
   }
 
   render() {
     const { people } = this.props;
-
     return (
       <div className="people">
         <div className="container">
@@ -64,7 +57,7 @@ class ConnectedPeople extends Component {
           <div>
             <ul className="cards flex fw">
               {people.map((man, index) => (
-                <li>
+                <li key={uuidv1()}>
                   <div className="card">
                     <div className="delete flex jc-end">
                       <div className="">
@@ -96,10 +89,8 @@ class ConnectedPeople extends Component {
               ))}
             </ul>
           </div>
-          {/* <button type="button" onClick={this.onClick}>Show people</button> */}
         </div>
       </div>
-
     );
   }
 }

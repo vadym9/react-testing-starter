@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import uuidv1 from 'uuid/v1';
 import {
   Ship, Description, Additional
 } from './styles';
@@ -25,8 +26,7 @@ class Starship extends Component {
     } = this.props.data;
 
     return (
-      <Ship>
-
+      <Ship key={uuidv1()}>
         <Description className="starship" onClick={this.toggleAdditional}>
           <h3>{name}</h3>
         </Description>
