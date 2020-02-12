@@ -1,0 +1,92 @@
+.dashboard {
+  margin-top:50px;
+  .container {
+    text-decoration: none;
+    .two-columns {
+      position: relative;
+
+      .circle{
+        position: absolute;
+        top: 50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        
+        border-radius: 50px;
+        border:2px solid transparent;
+        border-color: $dark-blue;
+        width: 70px;
+        height: 70px;
+        // background-color: burlywood;
+        // border-color: blue transparent red;
+      }
+
+      .column {
+
+        .block {
+
+          .left-top {
+            border-radius: 0px 0px 50px;
+            
+            &:hover{
+              transform: translate(-20px, -20px);
+              border-color: transparent red red transparent;
+            }
+          }
+
+          .left-bottom {
+            border-radius: 0px 50px 0px 0px;
+
+            &:hover{
+              transform: translate(-20px,20px);
+              border-color: red  red transparent   transparent;
+            }
+          }
+
+          .right-top {
+            border-radius: 0px 0px 0px 50px;
+
+            &:hover{
+              transform: translate(20px,-20px);
+              border-color:  transparent transparent red  red;
+            }
+          }
+
+          .right-bottom {
+            border-radius: 50px 0px 0px 0px;
+
+            &:hover{
+              transform: translate(20px,20px);
+              border-color: red transparent transparent red ;
+            }
+          }
+          
+            .link-block {
+              color: white;;
+              text-decoration: none;
+              transition: transform 1s;
+              border: 2px solid transparent;
+              background-color: $dark-blue;
+              width: 300px;
+              height: 300px;
+              margin: 20px;
+              position: relative;
+              // margin:0px auto;
+              h2{
+                position: absolute;
+                top:50%;
+                // left:50%;
+                left:45px;
+                // text-align: center;
+                // align-vertical:middle;
+                // flex: 0 0 0px;
+                transform: translateY(-50%);
+                text-decoration: none !important;
+              }
+            }
+          }
+
+        }
+
+      }
+    }
+  }
