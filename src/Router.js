@@ -37,7 +37,7 @@ class Router extends React.Component {
           <Switch>
             <Route path="/" exact component={Dashboard} />
             <Route path="/episodes" component={Episodes} />
-            <Route path="/people" exact component={People} />
+            <Route path="/people" component={People} />
             <Route path="/starships" component={Starships} />
           </Switch>
         </main>

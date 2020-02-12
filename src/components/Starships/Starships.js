@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import uuidv1 from 'uuid/v1';
 import {
   Container, Ships
 } from './styles';
@@ -48,7 +49,7 @@ class ConnectedStarships extends Component {
         <Ships>
           {
             this.props.starships.map((ship) => (
-              <Starship data={ship} />
+              <Starship data={ship} key={uuidv1()} />
             ))
           }
         </Ships>
