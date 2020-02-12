@@ -41,12 +41,10 @@ class ConnectedEpisodes extends Component {
   }
 
   render() {
-    console.log(this.props.number);
     return (
       <div className="container">
         <div className={this.state.loading ? 'lds-dual-ring' : ''} />
         <div className="list">
-
           <ul className="episodes flex fd-column ai-center">
             {this.props.episodes.map((episode) => (
               <li key={uuidv1()} className="episode flex jcsb ai-center">
