@@ -6,16 +6,16 @@
         "node":true
     },
     "rules":{
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/jsx-filename-extension": [0, { "extensions": [".js", ".jsx"] }],
         "comma-dangle": ["error", "never"],
-        "quotes": [1, "single"],
-        "semi":[1, "always"],
+        "quotes": [0, "single"],
+        "semi":[0, "always"],
         "react/destructuring-assignment":[1],
-        "react/prop-types": [1],
+        "react/prop-types": [0],
         "import/prefer-default-export":[1],
         "react/prefer-stateless-function":[1],
         "no-unused-vars":[1],
-        "camelcase": [1],
-        "react/no-access-state-in-setstate":[1]
+        "camelcase": [0],
+        "arrow-parens":[0]
     }
 }

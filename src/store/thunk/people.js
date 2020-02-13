@@ -1,39 +1,9 @@
-const requestSuccess = (name, payload) => ({
-  type: `${`${name}_SUCCESS`}`,
-  payload
-});
+import { requestSuccess, requestFail } from './requestResult';
 
-const requestFail = (name) => ({
-  type: `${`${name}_FAILE`}`
-});
-
-const requestEpisodes = () => fetch('https://api.jikan.moe/v3/anime/1/episodes');
 const requestPeople = () => fetch('https://swapi.co/api/people/');
-const requestStarships = () => fetch('https://swapi.co/api/starships');
 const requestRandomImages = () => fetch(`https://api.unsplash.com/photos/?client_id=${process.env.ACCESS_KEY}`);
 
-export const getStarships = () => async (dispatch) => {
-  try {
-    const result = await requestStarships();
-    const json = await result.json();
-
-    dispatch(requestSuccess('GET_STARSHIPS', json.results));
-  } catch (e) {
-    dispatch(requestFail('GET_STARSHIPS'));
-  }
-};
-
-export const getAnimeEpisodes = () => async (dispatch) => {
-  try {
-    const result = await requestEpisodes();
-    const json = await result.json();
-    dispatch(requestSuccess('GET_EPISODES', json.episodes));
-  } catch (e) {
-    dispatch(requestFail('GET_EPISODES'));
-  }
-};
-
-export const getPeople = () => async (dispatch) => {
+const getPeople = () => async dispatch => {
   try {
     const resultPeople = await requestPeople();
     const jsonPeople = await resultPeople.json();
@@ -62,3 +32,5 @@ export const getPeople = () => async (dispatch) => {
     dispatch(requestFail('GET_PEOPLE'));
   }
 };
+
+export default getPeople;

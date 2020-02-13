@@ -22,15 +22,19 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/vadym9/starter-webpack.git"
+        "url": "git+https://github.com/vadym9/webpack-redux-starter.git"
     },
     "author": "Vadym Putrov",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/vadym9/starter-webpack/issues"
+        "url": "https://github.com/vadym9/webpack-redux-starter/issues"
     },
-    "homepage": "https://github.com/vadym9/starter-webpack#readme",
+    "homepage": "https://github.com/vadym9/webpack-redux-starter#readme",
+    "engines": {
+        "node": ">=12.14.1"
+    },
     "dependencies": {
+        "classnames": "2.2.6",
         "clean-webpack-plugin": "3.0.0",
         "core-js": "3.6.4",
         "dotenv-webpack": "1.7.0",

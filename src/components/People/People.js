@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuidv1 from 'uuid/v1';
-import { deleteCard } from '../../redux/actions';
-import { getPeople } from '../../redux/thunk';
+import classNames from 'classnames';
+import savePeople from '../../store/actions/sw-actions';
+import { getPeople } from '../../store/thunk';
 import noimage from '../../img/noimage.png';
 
 
-const mapDispatchToProps = (dispatch) => ({
-  getPeople: () => dispatch(getPeople()),
-  deleteCard: (people) => dispatch(deleteCard(people))
+const mapDispatchToProps = dispatch => ({
+  displayPeople: () => dispatch(getPeople()),
+  save: (people) => dispatch(savePeople(people))
 });
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   people: state.people
 });
 
@@ -25,12 +26,15 @@ class ConnectedPeople extends Component {
   }
 
   componentDidMount = () => {
-    this.props.getPeople();
+    const { displayPeople } = this.props;
+    displayPeople();
   }
 
-  getSnapshotBeforeUpdate = (prevProps) => {
-    if (this.props.people !== undefined
-      && this.props.people !== prevProps.people) {
+  getSnapshotBeforeUpdate = prevProps => {
+    const { people } = this.props;
+
+    if (people !== undefined
+      && people !== prevProps.people) {
       this.setState({
         loading: false
       });
@@ -41,47 +45,53 @@ class ConnectedPeople extends Component {
   componentDidUpdate = () => {
   }
 
-  onDelete = (e) => {
-    const clonedPeople = JSON.stringify(this.props.people);
+  onDeleteCard = e => {
+    const { people, save } = this.props;
+
+    const clonedPeople = JSON.stringify(people);
     const result = JSON.parse(clonedPeople);
     result.splice(e.target.id, 1);
-    this.props.deleteCard(result);
+    save(result);
   }
 
   render() {
     const { people } = this.props;
+    const { loading } = this.state;
+
     return (
       <div className="people">
         <div className="container">
-          <div className={this.state.loading ? 'lds-dual-ring' : ''} />
+          <div className={classNames({ 'lds-dual-ring': loading })} />
           <div>
             <ul className="cards flex fw">
-              {people.map((man, index) => (
+              {people.map(({
+                img, name, gender, height, mass, eye_color
+              }, index) => (
                 <li key={uuidv1()}>
                   <div className="card">
                     <div className="delete flex jc-end">
                       <div className="">
-                        <button type="button" id={index} onClick={this.onDelete} className="btn">Remove</button>
+                        <button type="button" id={index} onClick={this.onDeleteCard} className="btn">Remove</button>
                       </div>
                     </div>
                     <div className="avatar">
-                      <img alt="noimage" src={man.img || noimage} />
+                      <img alt="noimage" src={img || noimage} />
                     </div>
                     <div className="title">
-                      <h3>{man.name}</h3>
+                      <h3>{name}</h3>
                     </div>
                     <div className="info">
                       <div className="gender">
-                        <p>{`Gender: ${man.gender}`}</p>
+                        <p>{`Gender: ${gender}`}</p>
                       </div>
                       <div className="height">
-                        <p>{`Height: ${man.height}`}</p>
+                        <p>{`Height: ${height}`}</p>
                       </div>
                       <div className="mass">
-                        <p>{`Mass: ${man.mass}`}</p>
+                        <p>{`Mass: ${mass}`}</p>
                       </div>
                       <div className="eye_color">
-                        <p>{`Eye color: ${man.eye_color}`}</p>
+                        <p>{`Eye color: ${eye_color}`}</p>
                       </div>
                     </div>
                   </div>

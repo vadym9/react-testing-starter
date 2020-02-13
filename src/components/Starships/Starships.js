@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuidv1 from 'uuid/v1';
+import classNames from 'classnames';
 import {
   Container, Ships
 } from './styles';
-import { getStarships } from '../../redux/thunk';
+import { getStarships } from '../../store/thunk';
 import Starship from '../Starship/Starship';
 
 const mapDispatchToProps = (dispatch) => ({
-  getStarships: () => dispatch(getStarships())
+  displayStarships: () => dispatch(getStarships())
 });
 
 const mapStateToProps = (state) => ({
@@ -26,12 +27,15 @@ class ConnectedStarships extends Component {
   }
 
   componentDidMount = () => {
-    this.props.getStarships();
+    const { displayStarships } = this.props;
+    displayStarships();
   }
 
-  getSnapshotBeforeUpdate = (prevProps) => {
-    if (this.props.starships !== undefined
-      && this.props.starships !== prevProps.starships) {
+  getSnapshotBeforeUpdate = prevProps => {
+    const { starships } = this.props;
+
+    if (starships !== undefined
+      && starships !== prevProps.starships) {
       this.setState({
         loading: false
       });
@@ -43,17 +47,19 @@ class ConnectedStarships extends Component {
   }
 
   render() {
+    const { loading } = this.state;
+    const { starships } = this.props;
     return (
       <Container>
-        <div className={this.state.loading ? 'lds-dual-ring' : ''} />
+        <div className={classNames({ 'lds-dual-ring': loading })} />
         <Ships>
           {
-            this.props.starships.map((ship) => (
+            starships.map((ship) => (
               <Starship data={ship} key={uuidv1()} />
             ))
           }
         </Ships>
-        <h1>{this.state.loading}</h1>
+        <h1>{loading}</h1>
       </Container>
     );
   }

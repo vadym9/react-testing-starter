@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuidv1 from 'uuid/v1';
-import { increment } from '../../redux/actions';
-import { getAnimeEpisodes } from '../../redux/thunk';
+import classNames from 'classnames';
+import { getAnimeEpisodes } from '../../store/thunk';
 
-
-const mapDispatchToProps = (dispatch) => ({
-  increment: (number) => dispatch(increment(number)),
-  getAnimeEpisodes: () => dispatch(getAnimeEpisodes())
+const mapDispatchToProps = dispatch => ({
+  getAnime: () => dispatch(getAnimeEpisodes())
 });
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   number: state.number,
   episodes: state.episodes
 });
@@ -23,9 +21,10 @@ class ConnectedEpisodes extends Component {
     };
   }
 
-  getSnapshotBeforeUpdate(prevProps) {
-    if (this.props.episodes !== undefined
-      && this.props.episodes !== prevProps.episodes) {
+  getSnapshotBeforeUpdate = prevProps => {
+    const { episodes } = this.props;
+    if (episodes !== undefined
+      && episodes !== prevProps.episodes) {
       this.setState({
         loading: false
       });
@@ -33,25 +32,33 @@ class ConnectedEpisodes extends Component {
     return null;
   }
 
-  componentDidUpdate() {
+  componentDidUpdate = () => {
   }
 
   componentDidMount = () => {
-    this.props.getAnimeEpisodes();
+    const { getAnime } = this.props;
+    getAnime();
   }
 
   render() {
+    const { loading } = this.state;
+    const { episodes } = this.props;
+
     return (
       <div className="container">
-        <div className={this.state.loading ? 'lds-dual-ring' : ''} />
+        <div className={classNames({ 'lds-dual-ring': loading })} />
         <div className="list">
           <ul className="episodes flex fd-column ai-center">
-            {this.props.episodes.map((episode) => (
+            {episodes.map(({ title, video_url, forum_url }) => (
               <li key={uuidv1()} className="episode flex jcsb ai-center">
-                <div><h3>{episode.title}</h3></div>
+                <div>
+                  <h3>
+                    {title}
+                  </h3>
+                </div>
                 <div className="btn-block">
-                  <a className="btn-link" href={episode.video_url}>Watch video</a>
-                  <a className="btn-link" href={episode.forum_url}>Open forum</a>
+                  <a className="btn-link" href={video_url}>Watch video</a>
+                  <a className="btn-link" href={forum_url}>Open forum</a>
                 </div>
               </li>
             ))}

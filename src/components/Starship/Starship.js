@@ -12,24 +12,29 @@ class Starship extends Component {
     };
   }
 
-  toggleAdditional = (e) => {
+  toggleAdditional = e => {
     e.preventDefault();
+    const { hidden } = this.state;
+
     this.setState({
-      hidden: !this.state.hidden
+      hidden: !hidden
     });
   }
 
   render() {
+    const { data } = this.props;
     const {
       name, model, length, passengers, crew, cargo_capacity
-    } = this.props.data;
+    } = data;
+
+    const { hidden } = this.state;
 
     return (
       <Ship>
         <Description className="starship" onClick={this.toggleAdditional}>
           <h3>{name}</h3>
         </Description>
-        <Additional hidden={this.state.hidden}>
+        <Additional hidden={hidden}>
           <p>
             {`Model: ${model}`}
           </p>
