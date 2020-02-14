@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Dashboard from './components/Dashboard/Dashboard';
-import Episodes from './components/Episodes/Episodes';
-import People from './components/People/People';
-import Starships from './components/Starships/Starships';
+import Dashboard from '../Dashboard/Dashboard';
+import Episodes from '../Episodes/Episodes';
+import People from '../People/People';
+import Starships from '../Starships/Starships';
 
 const Routes = () => (
   <main>

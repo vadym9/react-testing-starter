@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuidv1 from 'uuid/v1';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import { getAnimeEpisodes } from '../../store/thunk';
 
 const mapDispatchToProps = dispatch => ({
@@ -44,9 +44,11 @@ class ConnectedEpisodes extends Component {
     const { loading } = this.state;
     const { episodes } = this.props;
 
+    const preloaderClasses = classnames('', { 'lds-dual-ring': loading });
+
     return (
       <div className="container">
-        <div className={classNames({ 'lds-dual-ring': loading })} />
+        <div className={preloaderClasses} />
         <div className="list">
           <ul className="episodes flex fd-column ai-center">
             {episodes.map(({ title, video_url, forum_url }) => (

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuidv1 from 'uuid/v1';
-import classNames from 'classnames';
-import savePeople from '../../store/actions/sw-actions';
+import classnames from 'classnames';
+import { savePeople } from '../../store/actions';
 import { getPeople } from '../../store/thunk';
 import noimage from '../../img/noimage.png';
 
@@ -42,9 +42,6 @@ class ConnectedPeople extends Component {
     return null;
   }
 
-  componentDidUpdate = () => {
-  }
-
   onDeleteCard = e => {
     const { people, save } = this.props;
 
@@ -58,10 +55,12 @@ class ConnectedPeople extends Component {
     const { people } = this.props;
     const { loading } = this.state;
 
+    const preloaderClasses = classnames('', { 'lds-dual-ring': loading });
+
     return (
       <div className="people">
         <div className="container">
-          <div className={classNames({ 'lds-dual-ring': loading })} />
+          <div className={preloaderClasses} />
           <div>
             <ul className="cards flex fw">
               {people.map(({

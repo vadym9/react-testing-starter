@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuidv1 from 'uuid/v1';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import {
   Container, Ships
 } from './styles';
@@ -43,15 +43,14 @@ class ConnectedStarships extends Component {
     return null;
   }
 
-  componentDidUpdate = () => {
-  }
-
   render() {
     const { loading } = this.state;
     const { starships } = this.props;
+
+    const preloaderClasses = classnames('', { 'lds-dual-ring': loading });
     return (
       <Container>
-        <div className={classNames({ 'lds-dual-ring': loading })} />
+        <div className={preloaderClasses} />
         <Ships>
           {
             starships.map((ship) => (
