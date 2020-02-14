@@ -1,4 +1,4 @@
-import { SAVE_PEOPLE } from '../../constants';
+import { SAVE_PEOPLE } from '../constants';
 
 export const savePeople = payload => ({
   type: SAVE_PEOPLE,

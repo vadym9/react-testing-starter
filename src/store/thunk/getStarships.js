@@ -1,4 +1,4 @@
-import { requestSuccess, requestFail } from '../helper/requestResult';
+import { requestSuccess, requestFail } from './helper/requestResult';
 
 const requestStarships = () => fetch('https://swapi.co/api/starships');
 

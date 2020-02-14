@@ -1,4 +1,4 @@
-import { requestSuccess, requestFail } from '../helper/requestResult';
+import { requestSuccess, requestFail } from './helper/requestResult';
 
 const requestPeople = () => fetch('https://swapi.co/api/people/');
 const requestRandomImages = () => fetch(`https://api.unsplash.com/photos/?client_id=${process.env.ACCESS_KEY}`);

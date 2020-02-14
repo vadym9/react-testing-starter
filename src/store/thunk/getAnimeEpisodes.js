@@ -1,4 +1,4 @@
-import { requestSuccess, requestFail } from '../helper/requestResult';
+import { requestSuccess, requestFail } from './helper/requestResult';
 
 const requestEpisodes = () => fetch('https://api.jikan.moe/v3/anime/1/episodes');
 

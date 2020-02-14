@@ -13,7 +13,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  people: state.sw.people.people
+  people: state.sw.people
 });
 
 class ConnectedPeople extends Component {
