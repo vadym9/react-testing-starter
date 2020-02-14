@@ -6,7 +6,7 @@ import {
   Container, Ships
 } from './styles';
 import { getStarships } from '../../store/thunk';
-import Starship from '../Starship/Starship';
+import Starship from '../../components/Starship/Starship';
 
 const mapDispatchToProps = (dispatch) => ({
   displayStarships: () => dispatch(getStarships())
