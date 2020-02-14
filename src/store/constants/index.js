@@ -1,6 +1,5 @@
-import { GET_EPISODES_SUCCESS } from './anime-types';
-import { SAVE_PEOPLE, GET_PEOPLE_SUCCESS } from './people-types';
-import { GET_STARSHIPS_SUCCESS } from './starships-types';
+import { GET_EPISODES_SUCCESS } from './episodes';
+import { GET_STARSHIPS_SUCCESS, SAVE_PEOPLE, GET_PEOPLE_SUCCESS } from './sw';
 
 export {
   GET_EPISODES_SUCCESS,

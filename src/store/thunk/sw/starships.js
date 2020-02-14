@@ -1,8 +1,8 @@
-import { requestSuccess, requestFail } from './requestResult';
+import { requestSuccess, requestFail } from '../helper/requestResult';
 
 const requestStarships = () => fetch('https://swapi.co/api/starships');
 
-const getStarships = () => async dispatch => {
+export const getStarships = () => async dispatch => {
   try {
     const result = await requestStarships();
     const json = await result.json();
@@ -12,5 +12,3 @@ const getStarships = () => async dispatch => {
     dispatch(requestFail('GET_STARSHIPS'));
   }
 };
-
-export default getStarships;

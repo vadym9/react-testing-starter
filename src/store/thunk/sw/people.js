@@ -1,9 +1,9 @@
-import { requestSuccess, requestFail } from './requestResult';
+import { requestSuccess, requestFail } from '../helper/requestResult';
 
 const requestPeople = () => fetch('https://swapi.co/api/people/');
 const requestRandomImages = () => fetch(`https://api.unsplash.com/photos/?client_id=${process.env.ACCESS_KEY}`);
 
-const getPeople = () => async dispatch => {
+export const getPeople = () => async dispatch => {
   try {
     const resultPeople = await requestPeople();
     const jsonPeople = await resultPeople.json();
@@ -32,5 +32,3 @@ const getPeople = () => async dispatch => {
     dispatch(requestFail('GET_PEOPLE'));
   }
 };
-
-export default getPeople;

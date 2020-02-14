@@ -1,4 +1,4 @@
-import { GET_PEOPLE_SUCCESS, SAVE_PEOPLE } from '../constants';
+import { GET_PEOPLE_SUCCESS, SAVE_PEOPLE } from '../../constants';
 
 const initialState = {
   people: []

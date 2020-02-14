@@ -1,4 +1,4 @@
-import { savePeople } from './people-actions'
+import { savePeople } from './sw'
 
 export {
   savePeople

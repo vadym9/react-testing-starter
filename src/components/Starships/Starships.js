@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state) => ({
-  starships: state.starships
+  starships: state.sw.starships.starships
 });
 
 

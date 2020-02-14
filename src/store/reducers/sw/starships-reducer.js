@@ -1,4 +1,4 @@
-import { GET_STARSHIPS_SUCCESS } from '../constants';
+import { GET_STARSHIPS_SUCCESS } from '../../constants';
 
 const initialState = {
   starships: []

@@ -1,16 +1,8 @@
 import { combineReducers } from 'redux';
-import { episodesReducer } from './episodes-reducer';
-import { peopleReducer } from './people-reducer';
-import { starshipsReducer } from './starships-reducer';
+import { episodesReducer } from './episodes';
+import sw from './sw';
 
 export default combineReducers({
-  anime: {
-    episodesReducer
-  },
-  sw: {
-    peopleReducer,
-    starshipsReducer
-  }
-
-
+  anime: episodesReducer,
+  sw
 });

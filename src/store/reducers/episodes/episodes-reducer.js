@@ -1,4 +1,4 @@
-import { GET_EPISODES_SUCCESS } from '../constants';
+import { GET_EPISODES_SUCCESS } from '../../constants';
 
 const initialState = {
   episodes: []

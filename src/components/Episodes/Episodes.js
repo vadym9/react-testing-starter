@@ -9,9 +9,8 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  number: state.number,
-  episodes: state.episodes
-});
+  episodes: state.anime.episodes
+})
 
 class ConnectedEpisodes extends Component {
   constructor() {
@@ -32,9 +31,6 @@ class ConnectedEpisodes extends Component {
     return null;
   }
 
-  componentDidUpdate = () => {
-  }
-
   componentDidMount = () => {
     const { getAnime } = this.props;
     getAnime();
@@ -43,7 +39,6 @@ class ConnectedEpisodes extends Component {
   render() {
     const { loading } = this.state;
     const { episodes } = this.props;
-
     const preloaderClasses = classnames('', { 'lds-dual-ring': loading });
 
     return (

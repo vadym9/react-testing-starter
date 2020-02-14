@@ -1,8 +1,8 @@
-import { requestSuccess, requestFail } from './requestResult';
+import { requestSuccess, requestFail } from '../helper/requestResult';
 
 const requestEpisodes = () => fetch('https://api.jikan.moe/v3/anime/1/episodes');
 
-const getAnimeEpisodes = () => async dispatch => {
+export const getAnimeEpisodes = () => async dispatch => {
   try {
     const result = await requestEpisodes();
     const json = await result.json();
@@ -11,5 +11,3 @@ const getAnimeEpisodes = () => async dispatch => {
     dispatch(requestFail('GET_EPISODES'));
   }
 };
-
-export default getAnimeEpisodes;

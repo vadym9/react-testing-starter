@@ -1,6 +1,5 @@
-import getAnimeEpisodes from './anime-episodes';
-import getPeople from './people';
-import getStarships from './starships';
+import { getAnimeEpisodes } from './anime';
+import { getStarships, getPeople } from './sw';
 
 export {
   getAnimeEpisodes,
