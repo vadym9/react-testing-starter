@@ -101,9 +101,9 @@ module.exports = env => ({
   ...getDevServer(env),
   ...getDevTools(env),
 
-  optimization: {
-    runtimeChunk: {
-      name: entrypoint => `runtime~${entrypoint.name}`
-    }
-  }
+  // optimization: {
+  //   runtimeChunk: {
+  //     name: entrypoint => `runtime~${entrypoint.name}`
+  //   }
+  // }
 });
