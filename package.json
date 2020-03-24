@@ -4,16 +4,16 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "webpack-dev-server --env=dev --mode development ",
+        "start": "webpack-dev-server --env=dev --mode development",
         "start:prod": "webpack-dev-server --env=prod --mode production",
         "build": "webpack --env=dev --mode development",
         "build:prod": "webpack --env=prod --mode production",
-        "eslint:fix": "eslint --fix ./src/",
+        "fix": "eslint --fix ./src/",
         "check": "eslint ./src/"
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run eslint:fix"
+            "pre-commit": "npm run fix"
         }
     },
     "browserslist": [
@@ -22,22 +22,35 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/vadym9/starter-webpack.git"
+        "url": "git+https://github.com/vadym9/webpack-redux-starter.git"
     },
     "author": "Vadym Putrov",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/vadym9/starter-webpack/issues"
+        "url": "https://github.com/vadym9/webpack-redux-starter/issues"
     },
-    "homepage": "https://github.com/vadym9/starter-webpack#readme",
+    "homepage": "https://github.com/vadym9/webpack-redux-starter#readme",
+    "engines": {
+        "node": ">=12.14.1"
+    },
     "dependencies": {
+        "classnames": "2.2.6",
         "clean-webpack-plugin": "3.0.0",
         "core-js": "3.6.4",
+        "dotenv-webpack": "1.7.0",
         "react": "16.12.0",
-        "react-dom": "16.12.0"
+        "react-dom": "16.12.0",
+        "react-redux": "7.1.3",
+        "react-router-dom": "5.1.2",
+        "redux": "4.0.5",
+        "redux-logger": "3.0.6",
+        "redux-thunk": "2.3.0",
+        "styled-components": "5.0.1",
+        "uuid": "3.4.0"
     },
     "devDependencies": {
         "@babel/core": "7.8.3",
+        "@babel/plugin-proposal-class-properties": "7.8.3",
         "@babel/plugin-proposal-object-rest-spread": "7.8.3",
         "@babel/plugin-syntax-decorators": "7.8.3",
         "@babel/preset-env": "7.8.3",
@@ -64,6 +77,7 @@
         "node-sass": "4.13.1",
         "postcss-loader": "3.0.0",
         "react-hot-loader": "4.12.19",
+        "redux-devtools": "3.5.0",
         "sass-loader": "8.0.2",
         "style-loader": "1.1.3",
         "webpack": "4.41.5",

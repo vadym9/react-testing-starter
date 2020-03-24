@@ -1,0 +1,15 @@
+.header {
+  background: $transparent-blue;
+  padding: 15px;
+  border-radius: 10px;
+
+  .items {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+
+    li {
+      margin: 10px;
+    }
+  }
+}

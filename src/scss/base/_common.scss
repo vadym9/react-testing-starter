@@ -1,0 +1,52 @@
+body {
+  margin: 0px;
+  background: linear-gradient(-45deg, white, $light-gray);
+  background-size: 400% 400%;
+  background-repeat: no-repeat;
+  height: 100vh;
+
+  p {
+    margin: 1px;
+  }
+
+  main {
+    margin-top: 15px;
+  }
+}
+
+.container {
+  margin: 0px auto;
+  padding: 0 80px;
+}
+
+.flex {
+  display: flex;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.jcsb {
+  justify-content: space-between;
+}
+
+.fd-column {
+  flex-direction: column;
+}
+
+.fw {
+  flex-wrap: wrap;
+}
+
+.jc-end {
+  justify-content: flex-end;
+}
+
+.ai-center {
+  align-items: center;
+}
+
+.jc-start {
+  justify-content: flex-start;
+}
