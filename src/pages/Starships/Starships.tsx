@@ -2,20 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuidv1 from 'uuid/v1';
 import classnames from 'classnames';
-import {
-  Container, Ships
-} from './styles';
+import { Container, Ships } from './styles';
 import { getStarships } from '../../store/thunk';
 import Starship from '../../components/Starship/Starship';
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   displayStarships: () => dispatch(getStarships())
 });
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   starships: state.sw.starships
 });
-
 
 class ConnectedStarships extends Component {
   constructor(props) {
@@ -29,19 +26,18 @@ class ConnectedStarships extends Component {
   componentDidMount = () => {
     const { displayStarships } = this.props;
     displayStarships();
-  }
+  };
 
   getSnapshotBeforeUpdate = prevProps => {
     const { starships } = this.props;
 
-    if (starships !== undefined
-      && starships !== prevProps.starships) {
+    if (starships !== undefined && starships !== prevProps.starships) {
       this.setState({
         loading: false
       });
     }
     return null;
-  }
+  };
 
   render() {
     const { loading } = this.state;
@@ -52,11 +48,9 @@ class ConnectedStarships extends Component {
       <Container>
         <div className={preloaderClasses} />
         <Ships>
-          {
-            starships.map((ship) => (
-              <Starship data={ship} key={uuidv1()} />
-            ))
-          }
+          {starships.map(ship => (
+            <Starship data={ship} key={uuidv1()} />
+          ))}
         </Ships>
         <h1>{loading}</h1>
       </Container>
@@ -64,5 +58,8 @@ class ConnectedStarships extends Component {
   }
 }
 
-const Starships = connect(mapStateToProps, mapDispatchToProps)(ConnectedStarships);
+const Starships = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConnectedStarships);
 export default Starships;

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import uuidv1 from 'uuid/v1';
 import classnames from 'classnames';
-import { getAnimeEpisodes } from '../../store/thunk';
+import { getAnimeEpisodes } from "../../store/thunk";
+import { ConnectedEpisodesProps } from './models/connected-episodes-types';
 
 const mapDispatchToProps = dispatch => ({
   getAnime: () => dispatch(getAnimeEpisodes())
@@ -10,11 +11,11 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   episodes: state.anime.episodes
-})
+});
 
-class ConnectedEpisodes extends Component {
-  constructor() {
-    super();
+class ConnectedEpisodes extends Component<ConnectedEpisodesProps,{}> {
+  constructor(props) {
+    super(props);
     this.state = {
       loading: true
     };
@@ -22,19 +23,18 @@ class ConnectedEpisodes extends Component {
 
   getSnapshotBeforeUpdate = prevProps => {
     const { episodes } = this.props;
-    if (episodes !== undefined
-      && episodes !== prevProps.episodes) {
+    if (episodes !== undefined && episodes !== prevProps.episodes) {
       this.setState({
         loading: false
       });
     }
     return null;
-  }
+  };
 
   componentDidMount = () => {
     const { getAnime } = this.props;
     getAnime();
-  }
+  };
 
   render() {
     const { loading } = this.state;
@@ -49,13 +49,15 @@ class ConnectedEpisodes extends Component {
             {episodes.map(({ title, video_url, forum_url }) => (
               <li key={uuidv1()} className="episode flex jcsb ai-center">
                 <div>
-                  <h3>
-                    {title}
-                  </h3>
+                  <h3>{title}</h3>
                 </div>
                 <div className="btn-block">
-                  <a className="btn-link" href={video_url}>Watch video</a>
-                  <a className="btn-link" href={forum_url}>Open forum</a>
+                  <a className="btn-link" href={video_url}>
+                    Watch video
+                  </a>
+                  <a className="btn-link" href={forum_url}>
+                    Open forum
+                  </a>
                 </div>
               </li>
             ))}
@@ -66,5 +68,8 @@ class ConnectedEpisodes extends Component {
   }
 }
 
-const Episodes = connect(mapStateToProps, mapDispatchToProps)(ConnectedEpisodes);
+const Episodes = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConnectedEpisodes);
 export default Episodes;
