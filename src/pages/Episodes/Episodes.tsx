@@ -1,20 +1,27 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
-import uuidv1 from 'uuid/v1';
+import { Dispatch, Action } from 'redux';
+import { v1 as uuidv1 } from 'uuid';
 import classnames from 'classnames';
-import { getAnimeEpisodes } from "../../store/thunk";
-import { ConnectedEpisodesProps } from './models/connected-episodes-types';
+import { getAnimeEpisodes } from '../../store/thunk';
+import {
+  ConnectedEpisodesProps,
+  IMapDispatchToProps,
+  IMapStateToProps
+} from './models/connected-episodes-types';
 
-const mapDispatchToProps = dispatch => ({
-  getAnime: () => dispatch(getAnimeEpisodes())
+const mapDispatchToProps = (
+  dispatch: Dispatch<Action>
+): IMapDispatchToProps => ({
+  getAnime: () => dispatch(getAnimeEpisodes()),
 });
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) :IMapStateToProps => ({
   episodes: state.anime.episodes
 });
 
-class ConnectedEpisodes extends Component<ConnectedEpisodesProps,{}> {
-  constructor(props) {
+class ConnectedEpisodes extends React.Component<ConnectedEpisodesProps, {}> {
+  constructor(props: ConnectedEpisodesProps) {
     super(props);
     this.state = {
       loading: true
