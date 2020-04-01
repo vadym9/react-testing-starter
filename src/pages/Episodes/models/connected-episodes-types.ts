@@ -1,13 +1,20 @@
 import { Dispatch, Action } from 'redux';
-
-export interface ConnectedEpisodesProps {
-  episodes: any;
+import { getEpisodes } from '../../../store/actions'
+import { getAnimeEpisodes } from '../../../store/thunk';
+import { Episode } from '../../../global-models'
+export interface PropsFromDispatch {
+  getAnimeEpisodes: typeof getAnimeEpisodes
 }
 
-export interface IMapDispatchToProps {
-  getAnime: () => Dispatch<Action>,
+export interface PropsFromState {
+  episodes: Episode[]
 }
 
-export interface IMapStateToProps{
-  episodes: []
+export interface EpisodesProps {
+
 }
+export interface EpisodesState {
+  loading: boolean;
+}
+
+export type EpisodesAllProps = EpisodesProps & PropsFromDispatch & PropsFromState

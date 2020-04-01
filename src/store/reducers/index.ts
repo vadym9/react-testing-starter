@@ -1,14 +1,20 @@
-import { combineReducers } from 'redux';
+import { combineReducers, Reducer } from 'redux';
 import { episodesReducer } from './anime-episodes-reducer';
 import { peopleReducer } from './sw-people-reducer';
 import { starshipsReducer } from './sw-starships-reducer';
 
-const sw = combineReducers({
-  people: peopleReducer,
-  starships: starshipsReducer
-})
+import { EpisodesState } from './models/anime-episodes-reducer-types';
+import { PeopleState} from './models/sw-people-reducer-types';
+import {StarshipState} from './models/sw-starships-reducer-types';
 
-export default combineReducers({
+export interface ApplicationState{
+  anime: EpisodesState;
+  swPeople: PeopleState;
+  swStarships: StarshipState;
+} 
+
+export const reducers: Reducer<ApplicationState> =  combineReducers<ApplicationState>({
   anime: episodesReducer,
-  sw
+  swPeople: peopleReducer,
+  swStarships: starshipsReducer
 });

@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import {
   Ship, Description, Additional
 } from './styles';
+import {StarshipAllProps, StarshipState} from './models/starships-types';
 
-class Starship extends Component {
-  constructor() {
-    super();
+class Starship extends React.Component<StarshipAllProps, StarshipState> {
+  constructor(props:StarshipAllProps) {
+    super(props);
 
     this.state = {
       hidden: true
     };
   }
 
-  toggleAdditional = e => {
+  toggleAdditional = (e: React.MouseEvent) => {
     e.preventDefault();
     const { hidden } = this.state;
 

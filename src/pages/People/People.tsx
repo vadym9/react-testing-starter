@@ -1,23 +1,29 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
-import uuidv1 from 'uuid/v1';
+import { v1 as uuidv1 } from 'uuid';
 import classnames from 'classnames';
 import { savePeople } from '../../store/actions';
 import { getPeople } from '../../store/thunk';
 import noimage from '../../img/noimage.png';
+import { PeopleAllProps, PeopleState } from './models/people-types';
+import { Action } from 'redux';
+import { ApplicationState } from '../../store/reducers';
+import { PeopleCard } from '../../global-models';
+import { ThunkDispatch } from 'redux-thunk';
+import PeopleList from '../../components/PeopleList/PeopleList';
 
-const mapDispatchToProps = dispatch => ({
-  displayPeople: () => dispatch(getPeople()),
-  save: people => dispatch(savePeople(people))
+const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, Action>) => ({
+  getPeople: () => dispatch(getPeople()),
+  saveProple: (people: PeopleCard) => dispatch(savePeople(people))
 });
 
-const mapStateToProps = state => ({
-  people: state.sw.people
+const mapStateToProps = (state: ApplicationState) => ({
+  people: state.swPeople.people
 });
 
-class ConnectedPeople extends Component {
-  constructor() {
-    super();
+class ConnectedPeople extends React.Component<PeopleAllProps, PeopleState> {
+  constructor(props: PeopleAllProps) {
+    super(props);
 
     this.state = {
       loading: true
@@ -25,11 +31,12 @@ class ConnectedPeople extends Component {
   }
 
   componentDidMount = () => {
-    const { displayPeople } = this.props;
-    displayPeople();
+    this.props.getPeople();
   };
 
-  getSnapshotBeforeUpdate = prevProps => {
+  getSnapshotBeforeUpdate = (
+    prevProps: PeopleAllProps
+  ): PeopleAllProps | null => {
     const { people } = this.props;
 
     if (people !== undefined && people !== prevProps.people) {
@@ -40,13 +47,13 @@ class ConnectedPeople extends Component {
     return null;
   };
 
-  onDeleteCard = e => {
-    const { people, save } = this.props;
-
+  onDeleteCard = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { people, savePeople } = this.props;
+    
     const clonedPeople = JSON.stringify(people);
     const result = JSON.parse(clonedPeople);
     result.splice(e.target.id, 1);
-    save(result);
+    savePeople(result);
   };
 
   render() {
@@ -55,54 +62,12 @@ class ConnectedPeople extends Component {
 
     const preloaderClasses = classnames('', { 'lds-dual-ring': loading });
 
+    const peopleList = 
     return (
       <div className="people">
         <div className="container">
           <div className={preloaderClasses} />
-          <div>
-            <ul className="cards flex fw">
-              {people.map(
-                ({ img, name, gender, height, mass, eye_color }, index) => (
-                  <li key={uuidv1()}>
-                    <div className="card">
-                      <div className="delete flex jc-end">
-                        <div className="">
-                          <button
-                            type="button"
-                            id={index}
-                            onClick={this.onDeleteCard}
-                            className="btn"
-                          >
-                            Remove
-                          </button>
-                        </div>
-                      </div>
-                      <div className="avatar">
-                        <img alt="noimage" src={img || noimage} />
-                      </div>
-                      <div className="title">
-                        <h3>{name}</h3>
-                      </div>
-                      <div className="info">
-                        <div className="gender">
-                          <p>{`Gender: ${gender}`}</p>
-                        </div>
-                        <div className="height">
-                          <p>{`Height: ${height}`}</p>
-                        </div>
-                        <div className="mass">
-                          <p>{`Mass: ${mass}`}</p>
-                        </div>
-                        <div className="eye_color">
-                          <p>{`Eye color: ${eye_color}`}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                )
-              )}
-            </ul>
-          </div>
+          <PeopleList /> 
         </div>
       </div>
     );

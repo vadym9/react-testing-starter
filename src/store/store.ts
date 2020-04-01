@@ -1,13 +1,14 @@
-import { createStore, compose, applyMiddleware } from 'redux';
+import { createStore, compose, applyMiddleware, MiddlewareAPI,StoreEnhancer,Co, Store } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-import rootReducer from './reducers';
+import { reducers } from './reducers';
 import myMiddleware from './middleware';
-import {} from './reducers/models/anime-episodes-reducer-types';
+import { ApplicationState } from './reducers';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = composeWithDevTools({});
 
-const store = createStore(rootReducer, composeEnhancers(
+const store: Store<ApplicationState> = createStore(reducers, composeEnhancers(
   applyMiddleware(logger, thunk, myMiddleware)
 ));
 
