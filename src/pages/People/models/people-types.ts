@@ -11,11 +11,10 @@ export interface PeopleProps {
 }
 
 export interface PropsFromState {
-    people: PeopleCard
+    people: PeopleCard[]
 }
 
 export interface PropsFromDispatch {
-    savePeople: typeof savePeople;
     getPeople: typeof getPeople
 }
 

@@ -1,21 +1,28 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
-import uuidv1 from 'uuid/v1';
 import classnames from 'classnames';
 import { Container, Ships } from './styles';
 import { getStarships } from '../../store/thunk';
 import Starship from '../../components/Starship/Starship';
+import { StarshipsAllProps, StarshipsState } from './models/starships-types';
+import { v1 as uuidv1 } from 'uuid';
+import { Dispatch, Action, AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { ApplicationState } from '../../store/reducers';
 
-const mapDispatchToProps = dispatch => ({
-  displayStarships: () => dispatch(getStarships())
+const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, AnyAction>) => ({
+  getStarships: () => dispatch(getStarships())
 });
 
-const mapStateToProps = state => ({
-  starships: state.sw.starships
+const mapStateToProps = (state: ApplicationState) => ({
+  starships: state.swStarships.starships
 });
 
-class ConnectedStarships extends Component {
-  constructor(props) {
+class ConnectedStarships extends React.Component<
+  StarshipsAllProps,
+  StarshipsState
+> {
+  constructor(props: StarshipsAllProps) {
     super(props);
 
     this.state = {
@@ -24,11 +31,12 @@ class ConnectedStarships extends Component {
   }
 
   componentDidMount = () => {
-    const { displayStarships } = this.props;
-    displayStarships();
+    this.props.getStarships();
   };
 
-  getSnapshotBeforeUpdate = prevProps => {
+  getSnapshotBeforeUpdate = (
+    prevProps: StarshipsAllProps
+  ): StarshipsAllProps => {
     const { starships } = this.props;
 
     if (starships !== undefined && starships !== prevProps.starships) {
@@ -44,21 +52,20 @@ class ConnectedStarships extends Component {
     const { starships } = this.props;
 
     const preloaderClasses = classnames('', { 'lds-dual-ring': loading });
+    const listStarships = starships.map(ship => (
+      <Starship data={ship} key={uuidv1()} />
+    ));
     return (
       <Container>
         <div className={preloaderClasses} />
-        <Ships>
-          {starships.map(ship => (
-            <Starship data={ship} key={uuidv1()} />
-          ))}
-        </Ships>
+        <Ships>{listStarships}</Ships>
         <h1>{loading}</h1>
       </Container>
     );
   }
 }
 
-const Starships = connect(
+const Starships = connect<{}, {}, {}>(
   mapStateToProps,
   mapDispatchToProps
 )(ConnectedStarships);

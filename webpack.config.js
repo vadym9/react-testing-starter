@@ -39,7 +39,7 @@ module.exports = env => ({
       {
         test: /\.ts(x?)$/,
         exclude: /node_modules/,
-        use: ["babel-loader", "ts-loader"]
+        use: ["ts-loader"]
       },
       {
         enforce: "pre",
