@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Dispatch, Action } from 'redux';
-
+import { Action } from 'redux';
 import classnames from 'classnames';
+import { ThunkDispatch } from 'redux-thunk';
+
 import { getAnimeEpisodes } from '../../store/thunk';
 import { EpisodesAllProps } from './models/connected-episodes-types';
-import { ThunkDispatch } from 'redux-thunk';
 import EpisodeList from '../../components/EpisodeList/EpisodeList';
 import { ApplicationState } from '../../store/reducers';
 

@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
+import { v1 as uuidv1 } from 'uuid';
+import { AnyAction } from 'redux';
+import { ThunkDispatch } from 'redux-thunk';
+
 import { Container, Ships } from './styles';
 import { getStarships } from '../../store/thunk';
 import Starship from '../../components/Starship/Starship';
-import { StarshipsAllProps, StarshipsState } from './models/starships-types';
-import { v1 as uuidv1 } from 'uuid';
-import { Dispatch, Action, AnyAction } from 'redux';
-import { ThunkDispatch } from 'redux-thunk';
+import { StarshipsAllProps } from './models/starships-types';
 import { ApplicationState } from '../../store/reducers';
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, AnyAction>) => ({
@@ -19,45 +20,19 @@ const mapStateToProps = (state: ApplicationState) => ({
   loading: state.swStarships.loading
 });
 
-class ConnectedStarships extends React.Component<
-  StarshipsAllProps,
-  {}
-> {
-  // constructor(props: StarshipsAllProps) {
-  //   super(props);
-
-  //   this.state = {
-  //     loading: true
-  //   };
-  // }
-
+class ConnectedStarships extends React.Component<StarshipsAllProps, {}> {
   componentDidMount = () => {
     this.props.getStarships();
   };
 
-  // getSnapshotBeforeUpdate = (
-  //   prevProps: StarshipsAllProps
-  // ): StarshipsAllProps => {
-  //   const { starships } = this.props;
-
-  //   if (starships !== undefined && starships !== prevProps.starships) {
-  //     this.setState({
-  //       loading: false
-  //     });
-  //   }
-  //   return null;
-  // };
-
   render() {
-    // const { loading } = this.state;
     const { starships, loading } = this.props;
 
     const preloaderClasses = classnames('', { 'lds-dual-ring': loading });
     const listStarships = starships.map(ship => (
       <Starship data={ship} key={uuidv1()} />
     ));
-    console.log("starships", starships);
-    
+
     return (
       <Container>
         <div className={preloaderClasses} />

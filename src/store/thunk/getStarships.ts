@@ -1,7 +1,8 @@
-import { ResponseStarship } from '../../global-models';
-import { Dispatch, AnyAction } from 'redux';
-import { getStarshipsSuccess, getStarshipsFail, getStarshipsA } from '../actions';
+import { AnyAction } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+
+import { getStarshipsSuccess, getStarshipsFail, getStarshipsA } from '../actions';
+import { ResponseStarship } from './models/get-starships-types';
 
 const requestStarships = () => fetch('https://swapi.co/api/starships');
 

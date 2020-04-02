@@ -1,68 +1,43 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import { savePeople } from '../../store/actions';
-import { getPeople } from '../../store/thunk';
-
-import { PeopleAllProps, PeopleState } from './models/people-types';
 import { Action } from 'redux';
-import { ApplicationState } from '../../store/reducers';
 import { ThunkDispatch } from 'redux-thunk';
-import PeopleList from '../../components/PeopleList/PeopleList';
 
+import { getPeople } from '../../store/thunk';
+import { PeopleAllProps } from './models/people-types';
+import { ApplicationState } from '../../store/reducers';
+import PeopleList from '../../components/PeopleList/PeopleList';
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, Action>) => ({
   getPeople: () => dispatch(getPeople())
 });
 
 const mapStateToProps = (state: ApplicationState) => ({
-  people: state.swPeople.people,
   loading: state.swPeople.loading
 });
 
 class ConnectedPeople extends React.Component<PeopleAllProps, {}> {
-  // constructor(props: PeopleAllProps) {
-  //   super(props);
-
-  //   this.state = {
-  //     loading: true
-  //   };
-  // }
-
   componentDidMount = () => {
     this.props.getPeople();
   };
 
-  // getSnapshotBeforeUpdate = (
-  //   prevProps: PeopleAllProps
-  // ): PeopleAllProps | null => {
-  //   const { people } = this.props;
-
-  //   if (people && people !== prevProps.people) {
-  //     this.setState({
-  //       loading: false
-  //     });
-  //   }
-  //   return null;
-  // };
-
-  componentDidUpdate(){
-
-  }
-
   render() {
-    const { people, loading } = this.props;
+    const { loading } = this.props;
     const preloaderClasses = classnames('', { 'lds-dual-ring': loading });
     return (
       <div className="people">
         <div className="container">
           <div className={preloaderClasses} />
-          <PeopleList people={people} />
+          <PeopleList />
         </div>
       </div>
     );
   }
 }
 
-const People = connect<{},{},{}>(mapStateToProps, mapDispatchToProps)(ConnectedPeople);
+const People = connect<{}, {}, {}>(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConnectedPeople);
 export default People;

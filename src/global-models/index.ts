@@ -58,10 +58,3 @@ export interface Starship {
     edited: string,
     url: string
 }
-
-export interface ResponseStarship {
-    count: number;
-    next: string;
-    previous: string;
-    results: Starship[]
-}

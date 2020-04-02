@@ -1,4 +1,3 @@
-import { savePeople } from '../../../store/actions';
 import { getPeople } from '../../../store/thunk'
 import {PeopleCard} from '../../../global-models';
 
@@ -10,7 +9,6 @@ export interface PeopleProps {
 }
 
 export interface PropsFromState {
-    people: PeopleCard[];
     loading: boolean;
 }
 

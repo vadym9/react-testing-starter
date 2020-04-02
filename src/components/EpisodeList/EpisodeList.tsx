@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 import { ApplicationState } from '../../store/reducers';
-import { connect } from 'react-redux';
-import { EpisodeListAllProps, PropsFromState } from './models/episode-list-types';
-import Episode from '../Episode/Episode';
 import { v1 as uuidv1 } from 'uuid';
+import { connect } from 'react-redux';
+import { EpisodeListAllProps } from './models/episode-list-types';
+import Episode from '../Episode/Episode';
 
 const mapStateToProps = ({ anime }: ApplicationState) => ({
   episodes: anime.episodes

@@ -1,18 +1,18 @@
-import {PeopleCard} from '../../../global-models';
-import {savePeople} from '../../../store/actions';
+import { PeopleCard } from '../../../global-models';
+import { savePeople } from '../../../store/actions';
 
-export interface ManState{
+export interface ManState {
 
 }
-export interface PropsFromState{
+export interface PropsFromState {
     people: PeopleCard[];
 }
 
-export interface PropsFromDispatch{
+export interface PropsFromDispatch {
     savePeople: typeof savePeople;
 }
 
-export interface ManProps{
+export interface ManProps {
     index: number;
     man: PeopleCard;
 

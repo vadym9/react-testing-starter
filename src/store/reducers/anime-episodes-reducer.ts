@@ -1,7 +1,7 @@
+import { Reducer } from 'redux';
 import { GET_EPISODES_SUCCESS, GET_EPISODES } from '../constants';
 import { EpisodesAction } from '../actions/models/anime-episodes-types';
 import { EpisodesState } from './models/anime-episodes-reducer-types';
-import { Reducer } from 'redux';
 
 const initialState: EpisodesState = {
   episodes: [],
@@ -13,7 +13,7 @@ export const episodesReducer: Reducer<EpisodesState> = (state: EpisodesState = i
     case GET_EPISODES_SUCCESS:
       return {
         ...state,
-        episodes: [...action.episodes], 
+        episodes: [...action.episodes],
         loading: false
       };
     case GET_EPISODES:

@@ -1,18 +1,18 @@
-import {PeopleCard} from '../../../global-models';
+import { PeopleCard } from '../../../global-models';
 
-export interface PeopleListState{
-
-}
-export interface PropsFromState{
+export interface PeopleListState {
 
 }
+export interface PropsFromState {
+    people: PeopleCard[];
+}
 
-export interface PropsFromDispatch{
+export interface PropsFromDispatch {
 
 }
 
-export interface PeopleListProps{
-    people: PeopleCard[],
+export interface PeopleListProps {
+    
 }
 
 

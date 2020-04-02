@@ -1,5 +1,4 @@
-import { MiddlewareAPI, Middleware, Dispatch, Action, AnyAction } from 'redux';
-import { ApplicationState } from '../reducers'
+import { Middleware, Dispatch, Action, AnyAction } from 'redux';
 
 const myMiddleware: Middleware = () =>
     (next: Dispatch<AnyAction>) =>

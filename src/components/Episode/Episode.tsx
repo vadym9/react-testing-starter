@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Episode } from '../../global-models';
 import { v1 as uuidv1 } from 'uuid';
+
+import { Episode } from '../../global-models';
 import { EpisodeAllProps } from './models/episode-types';
 
 const Episode = ({ episode }: EpisodeAllProps) => (

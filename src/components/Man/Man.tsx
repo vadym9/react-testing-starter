@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { v1 as uuidv1 } from 'uuid';
-import noimage from '../../img/noimage.png';
-import { ManAllProps } from './models/man-types';
-import { savePeople } from '../../store/actions';
 import { connect } from 'react-redux';
 import { Dispatch, Action } from 'redux';
+
+import { ManAllProps } from './models/man-types';
+import { savePeople } from '../../store/actions';
 import { PeopleCard } from '../../global-models';
-import {ApplicationState} from '../../store/reducers'
+import { ApplicationState } from '../../store/reducers';
+
+import noimage from '../../img/noimage.png';
 
 const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
   savePeople: (people: PeopleCard) => dispatch(savePeople(people))
@@ -14,11 +16,10 @@ const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
 
 const mapStateToProps = (state: ApplicationState) => ({
   people: state.swPeople.people
-})
-
+});
 
 const ConnectedMan = ({ man, index, people, savePeople }: ManAllProps) => {
-  const onDeleteCard = (e: any)  => {
+  const onDeleteCard = (e: any) => {
     const clonedPeople = JSON.stringify(people);
     const result = JSON.parse(clonedPeople);
     result.splice(e.target.id, 1);

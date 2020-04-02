@@ -1,7 +1,7 @@
-import { Dispatch, Action, ActionCreator, AnyAction } from 'redux';
+import { AnyAction } from 'redux';
+import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { getEpisodesSuccess, getEpisodesFail, getEpisodes } from '../actions';
 import { Episode } from '../../global-models';
-import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
 const requestEpisodes = () => fetch('https://api.jikan.moe/v3/anime/1/episodes');
 
