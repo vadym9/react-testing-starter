@@ -23,7 +23,7 @@ const getDevServer = mode => {
 const getDevTools = mode => (mode === "dev" ? { devtool: "source-map" } : null);
 
 module.exports = env => ({
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   output: {
     path: path.join(__dirname, "/dist"),
     filename: "index_bundle.js"
@@ -35,6 +35,16 @@ module.exports = env => ({
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ["babel-loader", "eslint-loader"]
+      },
+      {
+        test: /\.ts(x?)$/,
+        exclude: /node_modules/,
+        use: ["ts-loader"]
+      },
+      {
+        enforce: "pre",
+        test: /\.js$/,
+        loader: "source-map-loader"
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
@@ -83,7 +93,7 @@ module.exports = env => ({
     ]
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"]
+    extensions: ["*", ".js", ".jsx", ".ts", ".tsx"]
   },
   plugins: [
     new Dotenv(),
