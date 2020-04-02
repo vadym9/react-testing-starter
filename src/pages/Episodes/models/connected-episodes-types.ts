@@ -7,14 +7,14 @@ export interface PropsFromDispatch {
 }
 
 export interface PropsFromState {
-  episodes: Episode[]
+  loading: boolean;
 }
 
 export interface EpisodesProps {
 
 }
 export interface EpisodesState {
-  loading: boolean;
+
 }
 
 export type EpisodesAllProps = EpisodesProps & PropsFromDispatch & PropsFromState

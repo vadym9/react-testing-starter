@@ -15,4 +15,4 @@ export interface GetStarshipsFail extends Action {
     type: GET_STARSHIPS_FAIL;
 }
 
-export type StarshipAction = GetStarshipsSuccess;
+export type StarshipAction = GetStarshipsSuccess | GetStarships;

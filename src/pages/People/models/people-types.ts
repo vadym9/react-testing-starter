@@ -3,7 +3,6 @@ import { getPeople } from '../../../store/thunk'
 import {PeopleCard} from '../../../global-models';
 
 export interface PeopleState {
-    loading: boolean
 }
 
 export interface PeopleProps {
@@ -11,7 +10,8 @@ export interface PeopleProps {
 }
 
 export interface PropsFromState {
-    people: PeopleCard[]
+    people: PeopleCard[];
+    loading: boolean;
 }
 
 export interface PropsFromDispatch {

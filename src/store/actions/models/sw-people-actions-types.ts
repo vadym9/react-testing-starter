@@ -20,4 +20,4 @@ export interface GetPeopleFail extends Action {
     type: GET_PEOPLE_FAIL
 }
 
-export type PeopleAction = SavePeople | GetPeopleSuccess
+export type PeopleAction = SavePeople | GetPeopleSuccess | GetPeople

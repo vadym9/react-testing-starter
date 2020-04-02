@@ -16,38 +16,42 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, Action>) => ({
 });
 
 const mapStateToProps = (state: ApplicationState) => ({
-  people: state.swPeople.people
+  people: state.swPeople.people,
+  loading: state.swPeople.loading
 });
 
-class ConnectedPeople extends React.Component<PeopleAllProps, PeopleState> {
-  constructor(props: PeopleAllProps) {
-    super(props);
+class ConnectedPeople extends React.Component<PeopleAllProps, {}> {
+  // constructor(props: PeopleAllProps) {
+  //   super(props);
 
-    this.state = {
-      loading: true
-    };
-  }
+  //   this.state = {
+  //     loading: true
+  //   };
+  // }
 
   componentDidMount = () => {
     this.props.getPeople();
   };
 
-  getSnapshotBeforeUpdate = (
-    prevProps: PeopleAllProps
-  ): PeopleAllProps | null => {
-    const { people } = this.props;
+  // getSnapshotBeforeUpdate = (
+  //   prevProps: PeopleAllProps
+  // ): PeopleAllProps | null => {
+  //   const { people } = this.props;
 
-    if (people !== undefined && people !== prevProps.people) {
-      this.setState({
-        loading: false
-      });
-    }
-    return null;
-  };
+  //   if (people && people !== prevProps.people) {
+  //     this.setState({
+  //       loading: false
+  //     });
+  //   }
+  //   return null;
+  // };
+
+  componentDidUpdate(){
+
+  }
 
   render() {
-    const { loading } = this.state;
-    const { people } = this.props;
+    const { people, loading } = this.props;
     const preloaderClasses = classnames('', { 'lds-dual-ring': loading });
     return (
       <div className="people">

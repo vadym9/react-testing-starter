@@ -15,46 +15,49 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, AnyAction>) => ({
 });
 
 const mapStateToProps = (state: ApplicationState) => ({
-  starships: state.swStarships.starships
+  starships: state.swStarships.starships,
+  loading: state.swStarships.loading
 });
 
 class ConnectedStarships extends React.Component<
   StarshipsAllProps,
-  StarshipsState
+  {}
 > {
-  constructor(props: StarshipsAllProps) {
-    super(props);
+  // constructor(props: StarshipsAllProps) {
+  //   super(props);
 
-    this.state = {
-      loading: true
-    };
-  }
+  //   this.state = {
+  //     loading: true
+  //   };
+  // }
 
   componentDidMount = () => {
     this.props.getStarships();
   };
 
-  getSnapshotBeforeUpdate = (
-    prevProps: StarshipsAllProps
-  ): StarshipsAllProps => {
-    const { starships } = this.props;
+  // getSnapshotBeforeUpdate = (
+  //   prevProps: StarshipsAllProps
+  // ): StarshipsAllProps => {
+  //   const { starships } = this.props;
 
-    if (starships !== undefined && starships !== prevProps.starships) {
-      this.setState({
-        loading: false
-      });
-    }
-    return null;
-  };
+  //   if (starships !== undefined && starships !== prevProps.starships) {
+  //     this.setState({
+  //       loading: false
+  //     });
+  //   }
+  //   return null;
+  // };
 
   render() {
-    const { loading } = this.state;
-    const { starships } = this.props;
+    // const { loading } = this.state;
+    const { starships, loading } = this.props;
 
     const preloaderClasses = classnames('', { 'lds-dual-ring': loading });
     const listStarships = starships.map(ship => (
       <Starship data={ship} key={uuidv1()} />
     ));
+    console.log("starships", starships);
+    
     return (
       <Container>
         <div className={preloaderClasses} />

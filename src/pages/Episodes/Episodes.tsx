@@ -4,44 +4,26 @@ import { Dispatch, Action } from 'redux';
 
 import classnames from 'classnames';
 import { getAnimeEpisodes } from '../../store/thunk';
-import {
-  EpisodesAllProps,
-  EpisodesState
-} from './models/connected-episodes-types';
+import { EpisodesAllProps } from './models/connected-episodes-types';
 import { ThunkDispatch } from 'redux-thunk';
 import EpisodeList from '../../components/EpisodeList/EpisodeList';
+import { ApplicationState } from '../../store/reducers';
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, Action>) => ({
   getAnimeEpisodes: () => dispatch(getAnimeEpisodes())
 });
 
-class ConnectedEpisodes extends React.Component<
-  EpisodesAllProps,
-  EpisodesState
-> {
-  constructor(props: EpisodesAllProps) {
-    super(props);
-    this.state = {
-      loading: true
-    };
-  }
+const mapStateToProps = (state: ApplicationState) => ({
+  loading: state.anime.loading
+});
 
-  getSnapshotBeforeUpdate = (prevProps: EpisodesAllProps): EpisodesAllProps => {
-    const { episodes } = this.props;
-    if (episodes !== undefined && episodes !== prevProps.episodes) {
-      this.setState({
-        loading: false
-      });
-    }
-    return null;
-  };
-
+class ConnectedEpisodes extends React.Component<EpisodesAllProps, {}> {
   componentDidMount = () => {
     this.props.getAnimeEpisodes();
   };
 
   render() {
-    const { loading } = this.state;
+    const { loading } = this.props;
     const preloaderClasses = classnames('', { 'lds-dual-ring': loading });
     return (
       <div className="container">
@@ -53,7 +35,7 @@ class ConnectedEpisodes extends React.Component<
 }
 
 const Episodes = connect<{}, {}, {}>(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(ConnectedEpisodes);
 

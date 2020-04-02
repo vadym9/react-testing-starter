@@ -2,7 +2,7 @@ import { getStarships } from '../../../store/thunk'
 import {Starship} from '../../../global-models';
 
 export interface StarshipsState {
-    loading: boolean;
+    
 }
 
 export interface PropsFromState {
@@ -14,7 +14,7 @@ export interface PropsFromDispatch {
 }
 
 export interface StarshipsProps {
-
+    loading: boolean
 }
 
 export type StarshipsAllProps = StarshipsProps & PropsFromState & PropsFromDispatch

@@ -14,4 +14,4 @@ export interface GetEpisodesFail extends Action {
 export interface GetEpisodes extends Action{
     type: GET_EPISODES
 }
-export type EpisodesAction = GetEpisodesSuccess;
+export type EpisodesAction = GetEpisodesSuccess | GetEpisodes;
