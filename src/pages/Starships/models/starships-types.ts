@@ -1,20 +1,8 @@
 import { getStarships } from '../../../store/thunk'
-import {Starship} from '../../../global-models';
-
-export interface StarshipsState {
-    
-}
-
-export interface PropsFromState {
-    starships: Starship[]
-}
-
-export interface PropsFromDispatch {
-    getStarships: typeof getStarships
-}
+import { Starship } from '../../../global-models';
 
 export interface StarshipsProps {
-    loading: boolean
+    loading: boolean;
+    starships: Starship[];
+    getStarships: typeof getStarships;
 }
-
-export type StarshipsAllProps = StarshipsProps & PropsFromState & PropsFromDispatch

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Ship, Description, Additional } from './styles';
-import { StarshipAllProps, StarshipState } from './models/starships-types';
+import { StarshipProps, StarshipState } from './models/starships-types';
 
-class Starship extends React.Component<StarshipAllProps, StarshipState> {
-  constructor(props: StarshipAllProps) {
+class Starship extends React.Component<StarshipProps, StarshipState> {
+  constructor(props: StarshipProps) {
     super(props);
 
     this.state = {

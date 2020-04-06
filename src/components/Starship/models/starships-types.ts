@@ -1,12 +1,9 @@
 import { Starship } from "../../../global-models";
 
-
-export interface SarshipProps {
+export interface StarshipProps {
     data: Starship
 }
 
 export interface StarshipState {
     hidden: boolean;
 }
-
-export type StarshipAllProps = SarshipProps 

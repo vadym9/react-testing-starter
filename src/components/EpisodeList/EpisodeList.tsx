@@ -4,17 +4,17 @@ import { v1 as uuidv1 } from 'uuid';
 import { connect } from 'react-redux';
 
 import { ApplicationState } from '../../store/reducers';
-import { EpisodeListAllProps } from './models/episode-list-types';
-import Episode from '../Episode/Episode';
+import { EpisodeListProps } from './models/episode-list-types';
+import EpisodeCard from '../Episode/Episode';
 
 const mapStateToProps = ({ anime }: ApplicationState) => ({
   episodes: anime.episodes
 });
 
-class ConnectedEpisodeList extends React.Component<EpisodeListAllProps, {}> {
-  render():JSX.Element {
+class ConnectedEpisodeList extends React.Component<EpisodeListProps, {}> {
+  render(): JSX.Element {
     const result = this.props.episodes.map((episode) => (
-      <Episode key={uuidv1()} episode={episode} />
+      <EpisodeCard key={uuidv1()} episode={episode} />
     ));
     return (
       <div className="list">

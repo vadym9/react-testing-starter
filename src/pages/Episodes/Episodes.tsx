@@ -5,7 +5,7 @@ import classnames from 'classnames';
 import { ThunkDispatch } from 'redux-thunk';
 
 import { getAnimeEpisodes } from '../../store/thunk';
-import { EpisodesAllProps } from './models/connected-episodes-types';
+import { EpisodesProps } from './models/connected-episodes-types';
 import EpisodeList from '../../components/EpisodeList/EpisodeList';
 import { ApplicationState } from '../../store/reducers';
 
@@ -17,7 +17,7 @@ const mapStateToProps = (state: ApplicationState) => ({
   loading: state.anime.loading
 });
 
-class ConnectedEpisodes extends React.Component<EpisodesAllProps, {}> {
+class ConnectedEpisodes extends React.Component<EpisodesProps, {}> {
   componentDidMount = () => {
     this.props.getAnimeEpisodes();
   };

@@ -5,7 +5,7 @@ import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 
 import { getPeople } from '../../store/thunk';
-import { PeopleAllProps } from './models/people-types';
+import { PeopleProps } from './models/people-types';
 import { ApplicationState } from '../../store/reducers';
 import PeopleList from '../../components/PeopleList/PeopleList';
 
@@ -17,7 +17,7 @@ const mapStateToProps = (state: ApplicationState) => ({
   loading: state.swPeople.loading
 });
 
-class ConnectedPeople extends React.Component<PeopleAllProps, {}> {
+class ConnectedPeople extends React.Component<PeopleProps, {}> {
   componentDidMount = () => {
     this.props.getPeople();
   };

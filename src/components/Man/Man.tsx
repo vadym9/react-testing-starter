@@ -3,7 +3,7 @@ import { v1 as uuidv1 } from 'uuid';
 import { connect } from 'react-redux';
 import { Dispatch, Action } from 'redux';
 
-import { ManAllProps } from './models/man-types';
+import { ManProps } from './models/man-types';
 import { savePeople } from '../../store/actions';
 import { PeopleCard } from '../../global-models';
 import { ApplicationState } from '../../store/reducers';
@@ -23,7 +23,7 @@ const ConnectedMan = ({
   index,
   people,
   savePeople
-}: ManAllProps): JSX.Element => {
+}: ManProps): JSX.Element => {
   const onDeleteCard = (e: any) => {
     const clonedPeople = JSON.stringify(people);
     const result = JSON.parse(clonedPeople);

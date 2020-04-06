@@ -8,7 +8,7 @@ import { ThunkDispatch } from 'redux-thunk';
 import { Container, Ships } from './styles';
 import { getStarships } from '../../store/thunk';
 import Starship from '../../components/Starship/Starship';
-import { StarshipsAllProps } from './models/starships-types';
+import { StarshipsProps } from './models/starships-types';
 import { ApplicationState } from '../../store/reducers';
 
 const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, AnyAction>) => ({
@@ -20,7 +20,7 @@ const mapStateToProps = (state: ApplicationState) => ({
   loading: state.swStarships.loading
 });
 
-class ConnectedStarships extends React.Component<StarshipsAllProps, {}> {
+class ConnectedStarships extends React.Component<StarshipsProps, {}> {
   componentDidMount = () => {
     this.props.getStarships();
   };
