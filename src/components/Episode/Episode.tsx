@@ -2,9 +2,8 @@ import * as React from 'react';
 import { v1 as uuidv1 } from 'uuid';
 
 import { Episode } from '../../global-models';
-import { EpisodeAllProps } from './models/episode-types';
 
-const Episode = ({ episode }: EpisodeAllProps): JSX.Element => {
+const Episode = ({ episode }: { episode: Episode }): JSX.Element => {
   const { title, video_url, forum_url } = episode;
   return (
     <li key={uuidv1()} className="episode flex jcsb ai-center">
