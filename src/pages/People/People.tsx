@@ -22,7 +22,7 @@ class ConnectedPeople extends React.Component<PeopleAllProps, {}> {
     this.props.getPeople();
   };
 
-  render() {
+  render():JSX.Element {
     const { loading } = this.props;
     const preloaderClasses = classnames('', { 'lds-dual-ring': loading });
     return (

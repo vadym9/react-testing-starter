@@ -1,11 +1,9 @@
 import * as React from 'react';
-import {
-  Ship, Description, Additional
-} from './styles';
-import {StarshipAllProps, StarshipState} from './models/starships-types';
+import { Ship, Description, Additional } from './styles';
+import { StarshipAllProps, StarshipState } from './models/starships-types';
 
 class Starship extends React.Component<StarshipAllProps, StarshipState> {
-  constructor(props:StarshipAllProps) {
+  constructor(props: StarshipAllProps) {
     super(props);
 
     this.state = {
@@ -20,13 +18,11 @@ class Starship extends React.Component<StarshipAllProps, StarshipState> {
     this.setState({
       hidden: !hidden
     });
-  }
+  };
 
-  render() {
+  render(): JSX.Element {
     const { data } = this.props;
-    const {
-      name, model, length, passengers, crew, cargo_capacity
-    } = data;
+    const { name, model, length, passengers, crew, cargo_capacity } = data;
 
     const { hidden } = this.state;
 
@@ -36,21 +32,11 @@ class Starship extends React.Component<StarshipAllProps, StarshipState> {
           <h3>{name}</h3>
         </Description>
         <Additional hidden={hidden}>
-          <p>
-            {`Model: ${model}`}
-          </p>
-          <p>
-            {`Length: ${length}`}
-          </p>
-          <p>
-            {`Passengers: ${passengers}`}
-          </p>
-          <p>
-            {`Crew: ${crew}`}
-          </p>
-          <p>
-            {`Cargo capacity: ${cargo_capacity}`}
-          </p>
+          <p>{`Model: ${model}`}</p>
+          <p>{`Length: ${length}`}</p>
+          <p>{`Passengers: ${passengers}`}</p>
+          <p>{`Crew: ${crew}`}</p>
+          <p>{`Cargo capacity: ${cargo_capacity}`}</p>
         </Additional>
       </Ship>
     );

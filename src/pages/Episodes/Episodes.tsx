@@ -22,7 +22,7 @@ class ConnectedEpisodes extends React.Component<EpisodesAllProps, {}> {
     this.props.getAnimeEpisodes();
   };
 
-  render() {
+  render(): JSX.Element {
     const { loading } = this.props;
     const preloaderClasses = classnames('', { 'lds-dual-ring': loading });
     return (

@@ -25,11 +25,11 @@ class ConnectedStarships extends React.Component<StarshipsAllProps, {}> {
     this.props.getStarships();
   };
 
-  render() {
+  render(): JSX.Element {
     const { starships, loading } = this.props;
 
     const preloaderClasses = classnames('', { 'lds-dual-ring': loading });
-    const listStarships = starships.map(ship => (
+    const listStarships = starships.map((ship) => (
       <Starship data={ship} key={uuidv1()} />
     ));
 
