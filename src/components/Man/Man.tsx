@@ -24,10 +24,11 @@ const ConnectedMan = ({
   people,
   savePeople
 }: ManProps): JSX.Element => {
-  const onDeleteCard = (e: any) => {
+  const onDeleteCard: React.MouseEventHandler  = (e: React.MouseEvent): void => {
+    const element = e.target as HTMLButtonElement;
     const clonedPeople = JSON.stringify(people);
     const result = JSON.parse(clonedPeople);
-    result.splice(e.target.id, 1);
+    result.splice(element.id, 1);
     savePeople(result);
   };
 
