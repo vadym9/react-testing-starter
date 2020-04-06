@@ -11,7 +11,7 @@ import store from './store/store';
 
 import './scss/style.scss';
 
-export const App = () => (
+export const App = (): JSX.Element => (
   <Provider store={store}>
     <MemoryRouter>
       <Navigation />

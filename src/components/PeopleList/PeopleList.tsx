@@ -10,7 +10,7 @@ const mapStateToProps = (state: ApplicationState) => ({
   people: state.swPeople.people
 });
 
-const ConnectedPeopleList = ({ people }: PeopleListAllProps) => {
+const ConnectedPeopleList = ({ people }: PeopleListAllProps): JSX.Element => {
   const list = people.map((man, index) => (
     <Man key={uuidv1()} man={man} index={index} />
   ));

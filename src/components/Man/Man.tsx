@@ -18,7 +18,12 @@ const mapStateToProps = (state: ApplicationState) => ({
   people: state.swPeople.people
 });
 
-const ConnectedMan = ({ man, index, people, savePeople }: ManAllProps) => {
+const ConnectedMan = ({
+  man,
+  index,
+  people,
+  savePeople
+}: ManAllProps): JSX.Element => {
   const onDeleteCard = (e: any) => {
     const clonedPeople = JSON.stringify(people);
     const result = JSON.parse(clonedPeople);

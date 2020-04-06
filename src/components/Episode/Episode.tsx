@@ -4,7 +4,7 @@ import { v1 as uuidv1 } from 'uuid';
 import { Episode } from '../../global-models';
 import { EpisodeAllProps } from './models/episode-types';
 
-const Episode = ({ episode }: EpisodeAllProps) => (
+const Episode = ({ episode }: EpisodeAllProps): JSX.Element => (
   <li key={uuidv1()} className="episode flex jcsb ai-center">
     <div>
       <h3>{episode.title}</h3>

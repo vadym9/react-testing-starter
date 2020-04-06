@@ -12,7 +12,7 @@ const mapStateToProps = ({ anime }: ApplicationState) => ({
 
 class ConnectedEpisodeList extends React.Component<EpisodeListAllProps, {}> {
   render() {
-    const result = this.props.episodes.map(episode => (
+    const result = this.props.episodes.map((episode) => (
       <Episode key={uuidv1()} episode={episode} />
     ));
     return (
