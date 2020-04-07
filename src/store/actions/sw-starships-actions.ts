@@ -1,10 +1,10 @@
 import { ActionCreator } from 'redux';
 import { GET_STARSHIPS, GET_STARSHIPS_SUCCESS, GET_STARSHIPS_FAIL } from '../constants';
-import { GetStarships, GetStarshipsSuccess, GetStarshipsFail } from './models/sw-starships-types';
+import { GetStarshipsA, GetStarshipsSuccess, GetStarshipsFail } from './models/sw-starships-types';
 import { Starship } from '../../global-models';
 
 
-export const getStarshipsA: ActionCreator<GetStarships> = () => ({
+export const getStarshipsA: ActionCreator<GetStarshipsA> = () => ({
   type: GET_STARSHIPS
 });
 

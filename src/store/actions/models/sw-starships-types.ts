@@ -1,7 +1,7 @@
 import { Action } from 'redux';
 import { Starship } from '../../../global-models';
 
-export interface GetStarships extends Action {
+export interface GetStarshipsA extends Action {
   type: string;
 }
 
@@ -14,4 +14,4 @@ export interface GetStarshipsFail extends Action {
   type: string;
 }
 
-export type StarshipAction = GetStarshipsSuccess | GetStarships;
+export type StarshipAction = GetStarshipsSuccess | GetStarshipsA;

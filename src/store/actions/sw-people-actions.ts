@@ -1,9 +1,9 @@
 import { ActionCreator } from 'redux';
 import {
-  SAVE_PEOPLE, GET_PEOPLE_SUCCESS, GET_PEOPLE, GET_PEOPLE_FAIL 
+  SAVE_PEOPLE, GET_PEOPLE_SUCCESS, GET_PEOPLE, GET_PEOPLE_FAIL
 } from '../constants';
 import {
-  SavePeople, GetPeople, GetPeopleSuccess, GetPeopleFail 
+  SavePeople, GetPeople, GetPeopleSuccess, GetPeopleFail
 } from './models/sw-people-actions-types';
 import { PeopleCard } from '../../global-models';
 

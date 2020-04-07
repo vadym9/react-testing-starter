@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { v1 as uuidv1 } from 'uuid';
 import { connect } from 'react-redux';
-import { Dispatch, Action } from 'redux';
+import { Dispatch, AnyAction } from 'redux';
 
 import {
   ManProps,
@@ -12,13 +12,15 @@ import {
 import { savePeople } from '../../store/actions';
 import { PeopleCard } from '../../global-models';
 import { ApplicationState } from '../../store/reducers';
+import { SavePeople } from '../../store/actions/models/sw-people-actions-types';
 
 import noimage from '../../img/noimage.png';
 
+
 const mapDispatchToProps = (
-  dispatch: Dispatch<Action>
+  dispatch: Dispatch<AnyAction>
 ): MapDispatchToProps => ({
-  savePeopleCard: (people: PeopleCard) => dispatch(savePeople(people))
+  savePeopleCard: (people: PeopleCard): SavePeople => dispatch(savePeople(people))
 });
 
 const mapStateToProps = (state: ApplicationState): MapStateToProps => ({
@@ -42,7 +44,7 @@ const ConnectedMan: React.FunctionComponent<ManAllProps> = ({
   };
 
   const {
-    img, name, gender, height, mass, eye_color 
+    img, name, gender, height, mass, eye_color
   }: PeopleCard = man;
 
   return (

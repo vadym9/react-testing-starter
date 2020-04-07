@@ -1,9 +1,7 @@
 import { PeopleCard } from '../../../global-models';
-import { savePeople } from '../../../store/actions';
-
 
 export interface MapDispatchToProps {
-  savePeopleCard: typeof savePeople;
+  savePeopleCard: Function;
 }
 
 export interface MapStateToProps {

@@ -8,11 +8,13 @@ import { ThunkDispatch } from 'redux-thunk';
 import { Container, Ships } from './styles';
 import { getStarships } from '../../store/thunk';
 import Starship from '../../components/Starship/Starship';
-import { StarshipsAllProps, MapStateToProps } from './models/starships-types';
+import { StarshipsAllProps, MapStateToProps, MapDispatchToProps } from './models/starships-types';
 import { ApplicationState } from '../../store/reducers';
 
-const mapDispatchToProps: Function = (dispatch: ThunkDispatch<{}, {}, AnyAction>) => ({
-  getStarships: () => dispatch(getStarships())
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<{}, {}, AnyAction>
+): MapDispatchToProps => ({
+  getStarships: (): Promise<void> => dispatch(getStarships())
 });
 
 const mapStateToProps = (state: ApplicationState): MapStateToProps => ({
@@ -21,7 +23,7 @@ const mapStateToProps = (state: ApplicationState): MapStateToProps => ({
 });
 
 class ConnectedStarships extends React.Component<StarshipsAllProps, {}> {
-  componentDidMount = () => {
+  componentDidMount = (): void => {
     this.props.getStarships();
   };
 
@@ -43,7 +45,7 @@ class ConnectedStarships extends React.Component<StarshipsAllProps, {}> {
   }
 }
 
-const Starships = connect<MapStateToProps, {}, {}>(
+const Starships = connect<MapStateToProps, MapDispatchToProps, {}>(
   mapStateToProps,
   mapDispatchToProps
 )(ConnectedStarships);

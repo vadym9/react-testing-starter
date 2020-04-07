@@ -1,8 +1,7 @@
-import { getStarships } from '../../../store/thunk';
 import { Starship } from '../../../global-models';
 
 export interface MapDispatchToProps {
-  getStarships: typeof getStarships;
+  getStarships: Function;
 }
 
 export interface MapStateToProps {

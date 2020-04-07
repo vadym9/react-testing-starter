@@ -5,7 +5,6 @@ import { getStarshipsSuccess, getStarshipsFail, getStarshipsA } from '../actions
 import { ResponseStarship } from './models/get-starships-types';
 import { requestStarships } from './API/starships-api';
 
-
 export const getStarships = (): ThunkAction<Promise<void>, {}, {}, AnyAction> =>
   async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
 

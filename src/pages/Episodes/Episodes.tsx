@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Action, Dispatch } from 'redux';
+import { Action } from 'redux';
 import classnames from 'classnames';
-import { ThunkDispatch, ThunkAction } from 'redux-thunk';
+import { ThunkDispatch } from 'redux-thunk';
 
 import { getAnimeEpisodes } from '../../store/thunk';
 import {
@@ -13,8 +13,8 @@ import {
 import EpisodeList from '../../components/EpisodeList/EpisodeList';
 import { ApplicationState } from '../../store/reducers';
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, Action>) => ({
-  getAnimeEpisodes: () => dispatch(getAnimeEpisodes())
+const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, Action>): MapDispatchToProps => ({
+  getAnimeEpisodes: (): Promise<void> => dispatch(getAnimeEpisodes())
 });
 
 const mapStateToProps = (state: ApplicationState): MapStateToProps => ({
@@ -40,7 +40,7 @@ class ConnectedEpisodes extends React.Component<EpisodesAllProps, {}> {
   }
 }
 
-const Episodes = connect<MapStateToProps, {}, {}>(
+const Episodes = connect<MapStateToProps, MapDispatchToProps, {}>(
   mapStateToProps,
   mapDispatchToProps
 )(ConnectedEpisodes);

@@ -6,15 +6,15 @@ import { ThunkDispatch } from 'redux-thunk';
 
 import { getPeople } from '../../store/thunk';
 import {
-  PeopleProps,
+  MapDispatchToProps,
   PeopleAllProps,
   MapStateToProps
 } from './models/people-types';
 import { ApplicationState } from '../../store/reducers';
 import PeopleList from '../../components/PeopleList/PeopleList';
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, Action>) => ({
-  getPeople: () => dispatch(getPeople())
+const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, Action>): MapDispatchToProps => ({
+  getPeople: (): Promise<void> => dispatch(getPeople())
 });
 
 const mapStateToProps = (state: ApplicationState): MapStateToProps => ({
@@ -22,7 +22,7 @@ const mapStateToProps = (state: ApplicationState): MapStateToProps => ({
 });
 
 class ConnectedPeople extends React.Component<PeopleAllProps, {}> {
-  componentDidMount = () => {
+  componentDidMount = (): void => {
     this.props.getPeople();
   };
 
@@ -42,7 +42,7 @@ class ConnectedPeople extends React.Component<PeopleAllProps, {}> {
   }
 }
 
-const People = connect<MapStateToProps, {}, PeopleProps>(
+const People = connect<MapStateToProps, {}, {}>(
   mapStateToProps,
   mapDispatchToProps
 )(ConnectedPeople);
