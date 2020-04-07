@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { connect,  } from 'react-redux';
+import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { v1 as uuidv1 } from 'uuid';
 import { AnyAction } from 'redux';

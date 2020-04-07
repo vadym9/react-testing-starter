@@ -1,9 +1,9 @@
-import { Starship } from "../../../global-models";
+import { Starship } from '../../../global-models';
 
 export interface StarshipProps {
-    data: Starship
+  data: Starship;
 }
 
 export interface StarshipState {
-    hidden: boolean;
+  hidden: boolean;
 }

@@ -1,6 +1,6 @@
+import { Reducer } from 'redux';
 import { GET_PEOPLE_SUCCESS, SAVE_PEOPLE, GET_PEOPLE } from '../constants';
 import { PeopleAction } from '../actions/models/sw-people-actions-types';
-import { Reducer } from 'redux';
 import { PeopleState } from './models/sw-people-reducer-types';
 
 const initialState: PeopleState = {
@@ -16,13 +16,13 @@ export const peopleReducer: Reducer<PeopleState> = (state: PeopleState = initial
         ...state,
         people: [...action.people],
         loading: false
-      }
+      };
     case GET_PEOPLE:
       return {
         ...state,
         loading: true
-      }
+      };
     default:
       return state;
   }
-}
+};

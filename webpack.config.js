@@ -1,9 +1,10 @@
-const path = require("path");
+const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 const Dotenv = require('dotenv-webpack');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const hmr = mode => (mode === "dev"
   ? { hotModuleRepl: new webpack.HotModuleReplacementPlugin() }
@@ -39,7 +40,12 @@ module.exports = env => ({
       {
         test: /\.ts(x?)$/,
         exclude: /node_modules/,
-        use: ["ts-loader"]
+        use: [{
+          loader: "ts-loader",
+          options: {
+            transpileOnly: true
+          }
+        }]
       },
       {
         enforce: "pre",
@@ -96,6 +102,9 @@ module.exports = env => ({
     extensions: ["*", ".js", ".jsx", ".ts", ".tsx"]
   },
   plugins: [
+    new ForkTsCheckerWebpackPlugin({
+      eslint: true
+    }),
     new Dotenv(),
     new CleanWebpackPlugin(),
     hmr("dev").hotModuleRepl,

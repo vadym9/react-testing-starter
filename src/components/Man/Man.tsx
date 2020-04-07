@@ -18,12 +18,10 @@ import noimage from '../../img/noimage.png';
 const mapDispatchToProps = (
   dispatch: Dispatch<Action>
 ): MapDispatchToProps => ({
-  savePeople: (people: PeopleCard) => dispatch(savePeople(people))
+  savePeopleCard: (people: PeopleCard) => dispatch(savePeople(people))
 });
 
-const mapStateToProps = (
-  state: ApplicationState
-): MapStateToProps => ({
+const mapStateToProps = (state: ApplicationState): MapStateToProps => ({
   people: state.swPeople.people
 });
 
@@ -31,7 +29,7 @@ const ConnectedMan: React.FunctionComponent<ManAllProps> = ({
   man,
   index,
   people,
-  savePeople
+  savePeopleCard
 }: ManAllProps): JSX.Element => {
   const onDeleteCard: React.MouseEventHandler<HTMLButtonElement> = (
     e: React.MouseEvent
@@ -39,11 +37,13 @@ const ConnectedMan: React.FunctionComponent<ManAllProps> = ({
     const element: { id: string } = e.target as HTMLButtonElement;
     const clonedPeople: string = JSON.stringify(people);
     const result: PeopleCard[] = JSON.parse(clonedPeople);
-    result.splice(parseInt(element.id), 1);
-    savePeople(result);
+    result.splice(parseInt(element.id, 10), 1);
+    savePeopleCard(result);
   };
 
-  const { img, name, gender, height, mass, eye_color }: PeopleCard = man;
+  const {
+    img, name, gender, height, mass, eye_color 
+  }: PeopleCard = man;
 
   return (
     <li key={uuidv1()}>
@@ -85,5 +85,8 @@ const ConnectedMan: React.FunctionComponent<ManAllProps> = ({
   );
 };
 
-const Man = connect<MapStateToProps, MapDispatchToProps, ManProps>(mapStateToProps, mapDispatchToProps)(ConnectedMan);
+const Man = connect<MapStateToProps, MapDispatchToProps, ManProps>(
+  mapStateToProps,
+  mapDispatchToProps
+)(ConnectedMan);
 export default Man;

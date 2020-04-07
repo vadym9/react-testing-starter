@@ -6,4 +6,4 @@ export {
   getAnimeEpisodes,
   getPeople,
   getStarships
-}
+};

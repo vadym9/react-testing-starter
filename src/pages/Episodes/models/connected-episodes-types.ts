@@ -1,8 +1,9 @@
-import { getAnimeEpisodes } from '../../../store/thunk';
-import { ThunkAction } from 'redux-thunk'
+import { ThunkAction } from 'redux-thunk';
 import { AnyAction } from 'redux';
+import { getAnimeEpisodes } from '../../../store/thunk';
+
 export interface MapDispatchToProps {
-  getAnimeEpisodes: typeof getAnimeEpisodes
+  getAnimeEpisodes: typeof getAnimeEpisodes;
 }
 
 export interface MapStateToProps {

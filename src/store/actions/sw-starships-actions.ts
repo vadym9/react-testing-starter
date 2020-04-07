@@ -5,14 +5,14 @@ import { Starship } from '../../global-models';
 
 
 export const getStarshipsA: ActionCreator<GetStarships> = () => ({
-    type: GET_STARSHIPS
-})
+  type: GET_STARSHIPS
+});
 
 export const getStarshipsSuccess: ActionCreator<GetStarshipsSuccess> = (s: Starship[]) => ({
-    type: GET_STARSHIPS_SUCCESS,
-    starships: s
-})
+  type: GET_STARSHIPS_SUCCESS,
+  starships: s
+});
 
 export const getStarshipsFail: ActionCreator<GetStarshipsFail> = () => ({
-    type: GET_STARSHIPS_FAIL
-})
+  type: GET_STARSHIPS_FAIL
+});

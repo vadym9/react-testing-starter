@@ -6,9 +6,12 @@ import { EpisodesState } from './models/anime-episodes-reducer-types';
 const initialState: EpisodesState = {
   episodes: [],
   loading: true
-}
+};
 
-export const episodesReducer: Reducer<EpisodesState> = (state: EpisodesState = initialState, action) => {
+export const episodesReducer: Reducer<EpisodesState> = (
+  state: EpisodesState = initialState,
+  action
+) => {
   switch ((action as EpisodesAction).type) {
     case GET_EPISODES_SUCCESS:
       return {
@@ -20,8 +23,8 @@ export const episodesReducer: Reducer<EpisodesState> = (state: EpisodesState = i
       return {
         ...state,
         loading: true
-      }
+      };
     default:
       return state;
   }
-}
+};

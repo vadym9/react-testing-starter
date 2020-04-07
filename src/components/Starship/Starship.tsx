@@ -22,7 +22,9 @@ class Starship extends React.Component<StarshipProps, StarshipState> {
 
   render(): JSX.Element {
     const { data } = this.props;
-    const { name, model, length, passengers, crew, cargo_capacity } = data;
+    const {
+      name, model, length, passengers, crew, cargo_capacity 
+    } = data;
 
     const { hidden } = this.state;
 

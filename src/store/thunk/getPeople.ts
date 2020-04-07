@@ -1,14 +1,15 @@
-import { AnyAction } from 'redux'
+import { AnyAction } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
 import { getPeopleSuccess, getPeopleFail, getPeopleA } from '../actions';
 import { PeopleCard } from '../../global-models';
 import { Image, RequestPeople } from './models/get-people-types';
-import { requestPeople, requestRandomImages } from './API/people-api'
+import { requestPeople, requestRandomImages } from './API/people-api';
 
 export const getPeople = (): ThunkAction<Promise<void>, {}, {}, AnyAction> =>
   async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
-    dispatch(getPeopleA())
+
+    dispatch(getPeopleA());
     try {
       const response: Response = await requestPeople();
       const jsonPeople: RequestPeople = await response.json();

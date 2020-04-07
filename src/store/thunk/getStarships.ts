@@ -10,7 +10,7 @@ export const getStarships = (): ThunkAction<Promise<void>, {}, {}, AnyAction> =>
   async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
 
     try {
-      dispatch(getStarshipsA())
+      dispatch(getStarshipsA());
       const result: Response = await requestStarships();
       const response: ResponseStarship = await result.json();
 

@@ -1,11 +1,11 @@
-import { getPeople } from '../../../store/thunk'
+import { getPeople } from '../../../store/thunk';
 
 export interface PeopleProps {
-    getPeople: typeof getPeople;
+  getPeople: typeof getPeople;
 }
 
 export interface MapStateToProps{
-    loading: boolean;
+  loading: boolean;
 }
 
 export type PeopleAllProps = MapStateToProps & PeopleProps

@@ -5,14 +5,14 @@ import { Episode } from '../../global-models';
 import { GetEpisodesSuccess, GetEpisodesFail, GetEpisodes } from './models/anime-episodes-types';
 
 export const getEpisodesSuccess: ActionCreator<GetEpisodesSuccess> = (e: Episode[]) => ({
-    type: GET_EPISODES_SUCCESS,
-    episodes: e
+  type: GET_EPISODES_SUCCESS,
+  episodes: e
 });
 
 export const getEpisodesFail: ActionCreator<GetEpisodesFail> = () => ({
-    type: GET_EPISODES_FAIL
-})
+  type: GET_EPISODES_FAIL
+});
 
 export const getEpisodes: ActionCreator<GetEpisodes> = () => ({
-    type: GET_EPISODES
-})
+  type: GET_EPISODES
+});

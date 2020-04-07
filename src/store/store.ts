@@ -1,9 +1,11 @@
-import { createStore, compose, applyMiddleware, MiddlewareAPI,StoreEnhancer, Store } from 'redux';
+import {
+  createStore, applyMiddleware, Store
+} from 'redux';
 import thunk from 'redux-thunk';
-import { reducers } from './reducers';
-import myMiddleware from './middleware';
-import { ApplicationState } from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { reducers, ApplicationState } from './reducers';
+import myMiddleware from './middleware';
+
 
 const composeEnhancers = composeWithDevTools({});
 

@@ -12,7 +12,8 @@
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "declaration": true,
-    "declarationDir": "@types"
+    "declarationDir": "@types",
+    "skipLibCheck": true
   },
   "exclude": ["node_modules", "**/*.spec.ts"]
 }
