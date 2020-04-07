@@ -1,4 +1,5 @@
 import { Reducer } from 'redux';
+
 import { GET_PEOPLE_SUCCESS, SAVE_PEOPLE, GET_PEOPLE } from '../constants';
 import { PeopleAction } from '../actions/models/sw-people-actions-types';
 import { PeopleState } from './models/sw-people-reducer-types';

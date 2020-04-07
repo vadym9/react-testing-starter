@@ -1,4 +1,5 @@
 import { ActionCreator } from 'redux';
+
 import {
   SAVE_PEOPLE, GET_PEOPLE_SUCCESS, GET_PEOPLE, GET_PEOPLE_FAIL
 } from '../constants';

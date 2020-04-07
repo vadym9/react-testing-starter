@@ -1,4 +1,5 @@
 import { Reducer } from 'redux';
+
 import { GET_STARSHIPS_SUCCESS, GET_STARSHIPS } from '../constants';
 import { StarshipAction } from '../actions/models/sw-starships-types';
 import { StarshipState } from './models/sw-starships-reducer-types';

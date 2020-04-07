@@ -1,4 +1,5 @@
 import { Reducer } from 'redux';
+
 import { GET_EPISODES_SUCCESS, GET_EPISODES } from '../constants';
 import { EpisodesAction } from '../actions/models/anime-episodes-types';
 import { EpisodesState } from './models/anime-episodes-reducer-types';
