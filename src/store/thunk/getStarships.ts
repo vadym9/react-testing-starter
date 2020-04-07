@@ -3,8 +3,8 @@ import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
 import { getStarshipsSuccess, getStarshipsFail, getStarshipsA } from '../actions';
 import { ResponseStarship } from './models/get-starships-types';
+import { requestStarships } from './API/starships-api';
 
-const requestStarships: Function = (): Promise<Response> => fetch('https://swapi.co/api/starships');
 
 export const getStarships = (): ThunkAction<Promise<void>, {}, {}, AnyAction> =>
   async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {

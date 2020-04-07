@@ -1,10 +1,9 @@
 import { AnyAction } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
+
 import { getEpisodesSuccess, getEpisodesFail, getEpisodes } from '../actions';
 import { Episode } from '../../global-models';
-
-
-const requestEpisodes: Function = (): Promise<Response> => fetch('https://api.jikan.moe/v3/anime/1/episodes');
+import { requestEpisodes } from './API/anime-episodes-api'
 
 export const getAnimeEpisodes = (): ThunkAction<Promise<void>, {}, {}, AnyAction> =>
   async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {

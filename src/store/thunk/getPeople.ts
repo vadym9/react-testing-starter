@@ -4,11 +4,7 @@ import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import { getPeopleSuccess, getPeopleFail, getPeopleA } from '../actions';
 import { PeopleCard } from '../../global-models';
 import { Image, RequestPeople } from './models/get-people-types';
-
-const requestPeople: Function = (): Promise<Response> => fetch('https://swapi.co/api/people/');
-const requestRandomImages: Function = (): Promise<Response> => fetch(`https://api.unsplash.com/photos/?client_id=${process.env.ACCESS_KEY}`);
-
-
+import { requestPeople, requestRandomImages } from './API/people-api'
 
 export const getPeople = (): ThunkAction<Promise<void>, {}, {}, AnyAction> =>
   async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
