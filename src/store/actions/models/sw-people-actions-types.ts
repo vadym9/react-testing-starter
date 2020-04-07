@@ -1,23 +1,22 @@
-import { SAVE_PEOPLE, GET_PEOPLE_SUCCESS, GET_PEOPLE, GET_PEOPLE_FAIL } from '../../constants';
 import { PeopleCard } from '../../../global-models';
 import { Action } from 'redux';
 
 export interface SavePeople extends Action {
-    type: SAVE_PEOPLE
+    type: string
     people: PeopleCard[]
 }
 
 export interface GetPeople extends Action {
-    type: GET_PEOPLE
+    type: string
 }
 
 export interface GetPeopleSuccess extends Action {
-    type: GET_PEOPLE_SUCCESS
+    type: string
     people: PeopleCard[]
 }
 
 export interface GetPeopleFail extends Action {
-    type: GET_PEOPLE_FAIL
+    type: string
 }
 
 export type PeopleAction = SavePeople | GetPeopleSuccess | GetPeople
