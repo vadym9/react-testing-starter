@@ -3,36 +3,47 @@ import { v1 as uuidv1 } from 'uuid';
 import { connect } from 'react-redux';
 import { Dispatch, Action } from 'redux';
 
-import { ManProps } from './models/man-types';
+import {
+  ManProps,
+  MapDispatchToProps,
+  MapStateToProps,
+  ManAllProps
+} from './models/man-types';
 import { savePeople } from '../../store/actions';
 import { PeopleCard } from '../../global-models';
 import { ApplicationState } from '../../store/reducers';
 
 import noimage from '../../img/noimage.png';
 
-const mapDispatchToProps = (dispatch: Dispatch<Action>) => ({
+const mapDispatchToProps = (
+  dispatch: Dispatch<Action>
+): MapDispatchToProps => ({
   savePeople: (people: PeopleCard) => dispatch(savePeople(people))
 });
 
-const mapStateToProps = (state: ApplicationState) => ({
+const mapStateToProps = (
+  state: ApplicationState
+): MapStateToProps => ({
   people: state.swPeople.people
 });
 
-const ConnectedMan = ({
+const ConnectedMan: React.FunctionComponent<ManAllProps> = ({
   man,
   index,
   people,
   savePeople
-}: ManProps): JSX.Element => {
-  const onDeleteCard: React.MouseEventHandler  = (e: React.MouseEvent): void => {
-    const element = e.target as HTMLButtonElement;
-    const clonedPeople = JSON.stringify(people);
-    const result = JSON.parse(clonedPeople);
-    result.splice(element.id, 1);
+}: ManAllProps): JSX.Element => {
+  const onDeleteCard: React.MouseEventHandler<HTMLButtonElement> = (
+    e: React.MouseEvent
+  ): void => {
+    const element: { id: string } = e.target as HTMLButtonElement;
+    const clonedPeople: string = JSON.stringify(people);
+    const result: PeopleCard[] = JSON.parse(clonedPeople);
+    result.splice(parseInt(element.id), 1);
     savePeople(result);
   };
 
-  const { img, name, gender, height, mass, eye_color } = man;
+  const { img, name, gender, height, mass, eye_color }: PeopleCard = man;
 
   return (
     <li key={uuidv1()}>
@@ -74,5 +85,5 @@ const ConnectedMan = ({
   );
 };
 
-const Man = connect(mapStateToProps, mapDispatchToProps)(ConnectedMan);
+const Man = connect<MapStateToProps, MapDispatchToProps, ManProps>(mapStateToProps, mapDispatchToProps)(ConnectedMan);
 export default Man;

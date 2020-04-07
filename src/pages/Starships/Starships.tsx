@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import { connect,  } from 'react-redux';
 import classnames from 'classnames';
 import { v1 as uuidv1 } from 'uuid';
 import { AnyAction } from 'redux';
@@ -8,19 +8,19 @@ import { ThunkDispatch } from 'redux-thunk';
 import { Container, Ships } from './styles';
 import { getStarships } from '../../store/thunk';
 import Starship from '../../components/Starship/Starship';
-import { StarshipsProps } from './models/starships-types';
+import { StarshipsAllProps, MapStateToProps } from './models/starships-types';
 import { ApplicationState } from '../../store/reducers';
 
-const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, AnyAction>) => ({
+const mapDispatchToProps: Function = (dispatch: ThunkDispatch<{}, {}, AnyAction>) => ({
   getStarships: () => dispatch(getStarships())
 });
 
-const mapStateToProps = (state: ApplicationState) => ({
+const mapStateToProps = (state: ApplicationState): MapStateToProps => ({
   starships: state.swStarships.starships,
   loading: state.swStarships.loading
 });
 
-class ConnectedStarships extends React.Component<StarshipsProps, {}> {
+class ConnectedStarships extends React.Component<StarshipsAllProps, {}> {
   componentDidMount = () => {
     this.props.getStarships();
   };
@@ -28,8 +28,8 @@ class ConnectedStarships extends React.Component<StarshipsProps, {}> {
   render(): JSX.Element {
     const { starships, loading } = this.props;
 
-    const preloaderClasses = classnames('', { 'lds-dual-ring': loading });
-    const listStarships = starships.map((ship) => (
+    const preloaderClasses: string = classnames('', { 'lds-dual-ring': loading });
+    const listStarships: JSX.Element[] = starships.map((ship) => (
       <Starship data={ship} key={uuidv1()} />
     ));
 
@@ -43,7 +43,7 @@ class ConnectedStarships extends React.Component<StarshipsProps, {}> {
   }
 }
 
-const Starships = connect<{}, {}, {}>(
+const Starships = connect<MapStateToProps, {}, {}>(
   mapStateToProps,
   mapDispatchToProps
 )(ConnectedStarships);

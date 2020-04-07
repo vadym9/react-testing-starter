@@ -5,8 +5,8 @@ import { getPeopleSuccess, getPeopleFail, getPeopleA } from '../actions';
 import { PeopleCard } from '../../global-models';
 import { Image, RequestPeople } from './models/get-people-types';
 
-const requestPeople = () => fetch('https://swapi.co/api/people/');
-const requestRandomImages = () => fetch(`https://api.unsplash.com/photos/?client_id=${process.env.ACCESS_KEY}`);
+const requestPeople: Function = (): Promise<Response> => fetch('https://swapi.co/api/people/');
+const requestRandomImages: Function = (): Promise<Response> => fetch(`https://api.unsplash.com/photos/?client_id=${process.env.ACCESS_KEY}`);
 
 
 
@@ -14,8 +14,8 @@ export const getPeople = (): ThunkAction<Promise<void>, {}, {}, AnyAction> =>
   async (dispatch: ThunkDispatch<{}, {}, AnyAction>): Promise<void> => {
     dispatch(getPeopleA())
     try {
-      const resultPeople = await requestPeople();
-      const jsonPeople: RequestPeople = await resultPeople.json();
+      const response: Response = await requestPeople();
+      const jsonPeople: RequestPeople = await response.json();
 
       let jsonImages: Image[];
       if (process.env.ACCESS_KEY) {

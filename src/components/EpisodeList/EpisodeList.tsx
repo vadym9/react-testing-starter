@@ -7,13 +7,13 @@ import { ApplicationState } from '../../store/reducers';
 import { EpisodeListProps } from './models/episode-list-types';
 import EpisodeCard from '../Episode/Episode';
 
-const mapStateToProps = ({ anime }: ApplicationState) => ({
+const mapStateToProps = ({ anime }: ApplicationState): EpisodeListProps => ({
   episodes: anime.episodes
 });
 
 class ConnectedEpisodeList extends React.Component<EpisodeListProps, {}> {
   render(): JSX.Element {
-    const result = this.props.episodes.map((episode) => (
+    const result: JSX.Element[] = this.props.episodes.map((episode) => (
       <EpisodeCard key={uuidv1()} episode={episode} />
     ));
     return (
@@ -24,6 +24,8 @@ class ConnectedEpisodeList extends React.Component<EpisodeListProps, {}> {
   }
 }
 
-const EpisodeList = connect(mapStateToProps)(ConnectedEpisodeList);
+const EpisodeList = connect<EpisodeListProps, {}, {}>(
+  mapStateToProps
+)(ConnectedEpisodeList);
 
 export default EpisodeList;

@@ -10,8 +10,8 @@ const mapStateToProps = (state: ApplicationState) => ({
   people: state.swPeople.people
 });
 
-const ConnectedPeopleList = ({ people }: PeopleListProps): JSX.Element => {
-  const list = people.map((man, index) => (
+const ConnectedPeopleList: React.FunctionComponent<PeopleListProps> = ({ people }: PeopleListProps): JSX.Element => {
+  const list: JSX.Element[] = people.map((man, index) => (
     <Man key={uuidv1()} man={man} index={index} />
   ));
   return (
@@ -21,5 +21,7 @@ const ConnectedPeopleList = ({ people }: PeopleListProps): JSX.Element => {
   );
 };
 
-const PeopleList = connect(mapStateToProps)(ConnectedPeopleList);
+const PeopleList = connect<PeopleListProps, {}, {}>(
+  mapStateToProps
+)(ConnectedPeopleList);
 export default PeopleList;

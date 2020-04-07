@@ -11,7 +11,7 @@ class Starship extends React.Component<StarshipProps, StarshipState> {
     };
   }
 
-  toggleAdditional = (e: React.MouseEvent) => {
+  toggleAdditional: React.MouseEventHandler = (e: React.MouseEvent): void => {
     e.preventDefault();
     const { hidden } = this.state;
 

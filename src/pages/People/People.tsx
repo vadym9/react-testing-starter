@@ -5,7 +5,11 @@ import { Action } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
 
 import { getPeople } from '../../store/thunk';
-import { PeopleProps } from './models/people-types';
+import {
+  PeopleProps,
+  PeopleAllProps,
+  MapStateToProps
+} from './models/people-types';
 import { ApplicationState } from '../../store/reducers';
 import PeopleList from '../../components/PeopleList/PeopleList';
 
@@ -13,18 +17,20 @@ const mapDispatchToProps = (dispatch: ThunkDispatch<{}, {}, Action>) => ({
   getPeople: () => dispatch(getPeople())
 });
 
-const mapStateToProps = (state: ApplicationState) => ({
+const mapStateToProps = (state: ApplicationState): MapStateToProps => ({
   loading: state.swPeople.loading
 });
 
-class ConnectedPeople extends React.Component<PeopleProps, {}> {
+class ConnectedPeople extends React.Component<PeopleAllProps, {}> {
   componentDidMount = () => {
     this.props.getPeople();
   };
 
-  render():JSX.Element {
+  render(): JSX.Element {
     const { loading } = this.props;
-    const preloaderClasses = classnames('', { 'lds-dual-ring': loading });
+    const preloaderClasses: string = classnames('', {
+      'lds-dual-ring': loading
+    });
     return (
       <div className="people">
         <div className="container">
@@ -36,7 +42,7 @@ class ConnectedPeople extends React.Component<PeopleProps, {}> {
   }
 }
 
-const People = connect<{}, {}, {}>(
+const People = connect<MapStateToProps, {}, PeopleProps>(
   mapStateToProps,
   mapDispatchToProps
 )(ConnectedPeople);
