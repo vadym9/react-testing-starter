@@ -2,7 +2,7 @@ import { AnyAction } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
 import { getPeopleSuccess, getPeopleFail, getPeopleA } from '../actions';
-import { PeopleCard } from '../../global-models';
+import { PeopleCard } from '../../models/people-api-types';
 import { Image, RequestPeople } from './models/get-people-types';
 import { requestPeople, requestRandomImages } from './API/people-api';
 

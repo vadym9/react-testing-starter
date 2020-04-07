@@ -1,4 +1,4 @@
-import { Starship } from '../../../global-models';
+import { Starship } from '../../../models/starships-api-types';
 
 export interface MapDispatchToProps {
   getStarships: Function;

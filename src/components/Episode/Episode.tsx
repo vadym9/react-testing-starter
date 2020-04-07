@@ -3,7 +3,7 @@ import * as React from 'react';
 // import React from 'react';
 import { v1 as uuidv1 } from 'uuid';
 
-import { Episode } from '../../global-models';
+import { Episode } from '../../models/episodes-api-types';
 
 const EpisodeCard = ({ episode }: { episode: Episode }): JSX.Element => {
   const { title, video_url, forum_url } = episode;

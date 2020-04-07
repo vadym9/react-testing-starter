@@ -1,7 +1,7 @@
 import { ActionCreator } from 'redux';
 
 import { GET_EPISODES_SUCCESS, GET_EPISODES_FAIL, GET_EPISODES } from '../constants';
-import { Episode } from '../../global-models';
+import { Episode } from '../../models/episodes-api-types';
 import { GetEpisodesSuccess, GetEpisodesFail, GetEpisodes } from './models/anime-episodes-types';
 
 export const getEpisodesSuccess: ActionCreator<GetEpisodesSuccess> = (e: Episode[]) => ({

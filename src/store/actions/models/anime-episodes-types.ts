@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { Episode } from '../../../global-models';
+import { Episode } from '../../../models/episodes-api-types';
 
 export interface GetEpisodesSuccess extends Action {
   type: string;

@@ -5,7 +5,7 @@ import {
 import {
   SavePeople, GetPeople, GetPeopleSuccess, GetPeopleFail
 } from './models/sw-people-actions-types';
-import { PeopleCard } from '../../global-models';
+import { PeopleCard } from '../../models/people-api-types';
 
 
 export const savePeople: ActionCreator<SavePeople> = (p: PeopleCard[]) => ({

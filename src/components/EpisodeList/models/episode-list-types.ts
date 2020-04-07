@@ -1,4 +1,4 @@
-import { Episode } from '../../../global-models';
+import { Episode } from '../../../models/episodes-api-types';
 
 export interface EpisodeListProps {
   episodes: Episode[];

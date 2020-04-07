@@ -1,4 +1,4 @@
-import { PeopleCard } from '../../../global-models';
+import { PeopleCard } from '../../../models/people-api-types';
 
 export interface PeopleState {
   people: PeopleCard[];

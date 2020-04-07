@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import { v1 as uuidv1 } from 'uuid';
 import { connect } from 'react-redux';
 

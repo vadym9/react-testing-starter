@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { Starship } from '../../../global-models';
+import { Starship } from '../../../models/starships-api-types';
 
 export interface GetStarshipsA extends Action {
   type: string;

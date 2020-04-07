@@ -2,7 +2,7 @@ import { AnyAction } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
 import { getEpisodesSuccess, getEpisodesFail, getEpisodes } from '../actions';
-import { Episode } from '../../global-models';
+import { Episode } from '../../models/episodes-api-types';
 import { requestEpisodes } from './API/anime-episodes-api';
 
 export const getAnimeEpisodes = (): ThunkAction<Promise<void>, {}, {}, AnyAction> =>

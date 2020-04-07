@@ -10,7 +10,7 @@ import {
   ManAllProps
 } from './models/man-types';
 import { savePeople } from '../../store/actions';
-import { PeopleCard } from '../../global-models';
+import { PeopleCard } from '../../models/people-api-types';
 import { ApplicationState } from '../../store/reducers';
 import { SavePeople } from '../../store/actions/models/sw-people-actions-types';
 

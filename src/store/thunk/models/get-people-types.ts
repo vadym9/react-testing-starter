@@ -1,4 +1,4 @@
-import { People } from '../../../global-models';
+import { People } from '../../../models/people-api-types';
 
 export interface RequestPeople {
   count: number;
