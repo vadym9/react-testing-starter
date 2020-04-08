@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { v1 as uuidv1 } from 'uuid';
 import { connect } from 'react-redux';
 
@@ -10,7 +10,7 @@ const mapStateToProps = ({ anime }: ApplicationState): EpisodeListProps => ({
   episodes: anime.episodes
 });
 
-class ConnectedEpisodeList extends React.Component<EpisodeListProps, {}> {
+class ConnectedEpisodeList extends Component<EpisodeListProps, {}> {
   render(): JSX.Element {
     const result: JSX.Element[] = this.props.episodes.map((episode) => (
       <EpisodeCard key={uuidv1()} episode={episode} />

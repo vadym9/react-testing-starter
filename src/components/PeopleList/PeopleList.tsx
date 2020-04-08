@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 import { v1 as uuidv1 } from 'uuid';
 
@@ -10,7 +10,7 @@ const mapStateToProps = (state: ApplicationState): PeopleListProps => ({
   people: state.swPeople.people
 });
 
-const ConnectedPeopleList: React.FunctionComponent<PeopleListProps> = ({
+const ConnectedPeopleList: FunctionComponent<PeopleListProps> = ({
   people
 }: PeopleListProps): JSX.Element => {
   const list: JSX.Element[] = people.map((man, index) => (

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { Action } from 'redux';
@@ -21,7 +21,7 @@ const mapStateToProps = (state: ApplicationState): MapStateToProps => ({
   loading: state.swPeople.loading
 });
 
-class ConnectedPeople extends React.Component<PeopleAllProps, {}> {
+class ConnectedPeople extends Component<PeopleAllProps, {}> {
   componentDidMount = (): void => {
     this.props.getPeople();
   };

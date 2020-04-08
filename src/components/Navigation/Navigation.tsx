@@ -1,7 +1,7 @@
-import * as React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Link } from 'react-router-dom';
 
-const Navigation = (): JSX.Element => (
+const Navigation: FunctionComponent = (): JSX.Element => (
   <header className="header">
     <div className="container">
       <ul className="items flex">

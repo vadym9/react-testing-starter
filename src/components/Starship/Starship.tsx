@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React, { Component, MouseEventHandler, MouseEvent } from 'react';
 import { Ship, Description, Additional } from './styles';
 import { StarshipProps, StarshipState } from './models/starships-types';
 
-class Starship extends React.Component<StarshipProps, StarshipState> {
+class Starship extends Component<StarshipProps, StarshipState> {
   constructor(props: StarshipProps) {
     super(props);
 
@@ -11,7 +11,7 @@ class Starship extends React.Component<StarshipProps, StarshipState> {
     };
   }
 
-  toggleAdditional: React.MouseEventHandler = (e: React.MouseEvent): void => {
+  toggleAdditional: MouseEventHandler = (e: MouseEvent): void => {
     e.preventDefault();
     const { hidden } = this.state;
 
@@ -23,7 +23,7 @@ class Starship extends React.Component<StarshipProps, StarshipState> {
   render(): JSX.Element {
     const { data } = this.props;
     const {
-      name, model, length, passengers, crew, cargo_capacity 
+      name, model, length, passengers, crew, cargo_capacity
     } = data;
 
     const { hidden } = this.state;

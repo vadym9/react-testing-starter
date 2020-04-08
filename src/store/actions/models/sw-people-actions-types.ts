@@ -1,4 +1,5 @@
 import { Action } from 'redux';
+
 import { PeopleCard } from '../../../models/people-api-types';
 
 export interface SavePeople extends Action {

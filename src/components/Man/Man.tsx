@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FunctionComponent } from 'react';
 import { v1 as uuidv1 } from 'uuid';
 import { connect } from 'react-redux';
 import { Dispatch, AnyAction } from 'redux';
@@ -27,7 +27,7 @@ const mapStateToProps = (state: ApplicationState): MapStateToProps => ({
   people: state.swPeople.people
 });
 
-const ConnectedMan: React.FunctionComponent<ManAllProps> = ({
+const ConnectedMan: FunctionComponent<ManAllProps> = ({
   man,
   index,
   people,

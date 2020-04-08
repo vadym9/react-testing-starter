@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Action } from 'redux';
 import classnames from 'classnames';
@@ -21,7 +21,7 @@ const mapStateToProps = (state: ApplicationState): MapStateToProps => ({
   loading: state.anime.loading
 });
 
-class ConnectedEpisodes extends React.Component<EpisodesAllProps, {}> {
+class ConnectedEpisodes extends Component<EpisodesAllProps, {}> {
   componentDidMount = (): void => {
     this.props.getAnimeEpisodes();
   };

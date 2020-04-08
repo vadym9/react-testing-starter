@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { v1 as uuidv1 } from 'uuid';
 
 import { Episode } from '../../models/episodes-api-types';
