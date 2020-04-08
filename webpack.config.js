@@ -1,9 +1,10 @@
-const path = require("path");
+const path = require('path');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const webpack = require("webpack");
 const Dotenv = require('dotenv-webpack');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const hmr = mode => (mode === "dev"
   ? { hotModuleRepl: new webpack.HotModuleReplacementPlugin() }
@@ -23,7 +24,7 @@ const getDevServer = mode => {
 const getDevTools = mode => (mode === "dev" ? { devtool: "source-map" } : null);
 
 module.exports = env => ({
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   output: {
     path: path.join(__dirname, "/dist"),
     filename: "index_bundle.js"
@@ -35,6 +36,21 @@ module.exports = env => ({
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ["babel-loader", "eslint-loader"]
+      },
+      {
+        test: /\.ts(x?)$/,
+        exclude: /node_modules/,
+        use: [{
+          loader: "ts-loader",
+          options: {
+            transpileOnly: true
+          }
+        }]
+      },
+      {
+        enforce: "pre",
+        test: /\.js$/,
+        loader: "source-map-loader"
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
@@ -83,9 +99,12 @@ module.exports = env => ({
     ]
   },
   resolve: {
-    extensions: ["*", ".js", ".jsx"]
+    extensions: ["*", ".js", ".jsx", ".ts", ".tsx"]
   },
   plugins: [
+    new ForkTsCheckerWebpackPlugin({
+      eslint: true
+    }),
     new Dotenv(),
     new CleanWebpackPlugin(),
     hmr("dev").hotModuleRepl,
