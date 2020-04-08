@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Provider } from 'react-redux';
 
 import { MemoryRouter, Route, Switch } from 'react-router-dom';
@@ -11,7 +11,7 @@ import store from './store/store';
 
 import './scss/style.scss';
 
-export const App = (): JSX.Element => (
+export const App: FunctionComponent = (): JSX.Element => (
   <Provider store={store}>
     <MemoryRouter>
       <Navigation />
