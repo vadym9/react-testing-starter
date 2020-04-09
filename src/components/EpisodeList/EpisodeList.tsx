@@ -10,7 +10,7 @@ const mapStateToProps = ({ anime }: ApplicationState): EpisodeListProps => ({
   episodes: anime.episodes
 });
 
-class ConnectedEpisodeList extends Component<EpisodeListProps, {}> {
+export class ConnectedEpisodeList extends Component<EpisodeListProps, {}> {
   render(): JSX.Element {
     const result: JSX.Element[] = this.props.episodes.map((episode) => (
       <EpisodeCard key={uuidv1()} episode={episode} />

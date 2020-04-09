@@ -21,7 +21,7 @@ const mapStateToProps = (state: ApplicationState): MapStateToProps => ({
   loading: state.anime.loading
 });
 
-class ConnectedEpisodes extends Component<EpisodesAllProps, {}> {
+export class ConnectedEpisodes extends Component<EpisodesAllProps, {}> {
   componentDidMount = (): void => {
     this.props.getAnimeEpisodes();
   };

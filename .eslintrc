@@ -51,18 +51,21 @@
         "mjs": "never"
       }],
     "@typescript-eslint/camelcase": 0,
-    "implicit-arrow-linebreak": 0
+    "implicit-arrow-linebreak": 0,
+    "jest/no-disabled-tests": 0
   },
   "extends": [
     "airbnb-base",
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:import/errors",
-    "plugin:import/warnings"
+    "plugin:import/warnings",
+    "plugin:jest/all"
   ],
   "env": {
     "browser": true,
     "node": true,
-    "es6": true
+    "es6": true,
+    "jest": true 
   }
 }

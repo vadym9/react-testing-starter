@@ -27,7 +27,7 @@ const mapStateToProps = (state: ApplicationState): MapStateToProps => ({
   people: state.swPeople.people
 });
 
-const ConnectedMan: FunctionComponent<ManAllProps> = ({
+export const ConnectedMan: FunctionComponent<ManAllProps> = ({
   man,
   index,
   people,
@@ -42,6 +42,10 @@ const ConnectedMan: FunctionComponent<ManAllProps> = ({
     result.splice(parseInt(element.id, 10), 1);
     savePeopleCard(result);
   };
+  
+  if (!man) {
+    return null;
+  }
 
   const {
     img, name, gender, height, mass, eye_color
